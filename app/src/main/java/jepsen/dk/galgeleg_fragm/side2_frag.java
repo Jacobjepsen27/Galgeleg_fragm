@@ -1,6 +1,5 @@
 package jepsen.dk.galgeleg_fragm;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -32,7 +31,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
 
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
 
-        rod = (ViewGroup) i.inflate (R.layout.side2_frag, container, false);
+        rod = (ViewGroup) i.inflate(R.layout.side2_frag, container, false);
 
 
         if (savedInstanceState == null) {
@@ -50,10 +49,11 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
             hentOrd(); // Version 2 vha. asynctask
 
             txt.setText("");
-            Toast.makeText(this, "Henter tekst fra the webz", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Henter tekst fra the webz", Toast.LENGTH_SHORT).show();
         }
+
+        return rod;
     }
-}
 
 
     private void hentOrd(){
@@ -85,7 +85,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
         try {
             Velkomst_frag.gl.gætBogstav(bogstav);
         } catch (Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show(); // Viser en lille popup med fejltekst fra Galgelogik
+            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show(); // Viser en lille popup med fejltekst fra Galgelogik
             return;
         }
 
