@@ -54,6 +54,8 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
         }
     }
 }
+
+
     private void hentOrd(){
         new AsyncTask(){
 
