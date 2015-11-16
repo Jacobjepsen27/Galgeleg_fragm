@@ -3,6 +3,7 @@ package jepsen.dk.galgeleg_fragm;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,15 +36,16 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
 
         rod = (ViewGroup) i.inflate(R.layout.velkomst_frag, container, false);
 
-        if(savedInstanceState == null){
+        if(savedInstanceState == null) {
             gl = new Galgelogik();
             gl.nulstil();
-
+        }
             difficult = (Button) rod.findViewById(R.id.difButton);
             difficult.setOnClickListener(this);
 
             start = (Button) rod.findViewById(R.id.startButton);
             galgeImg = (ImageView) rod.findViewById(R.id.galgeImageView);
+            galgeImg.setImageResource(R.drawable.forkert4);
             count = -1;
             countMode = true;
 
@@ -59,11 +61,10 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
 
             start.setAnimation(animation);
             start.setOnClickListener(this);
-        }
 
         startRunning(500);
 
-        return i.inflate(R.layout.velkomst_frag, container, false);
+        return rod;
     }
 
     @Override
