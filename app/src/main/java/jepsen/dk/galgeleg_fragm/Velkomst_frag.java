@@ -85,6 +85,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
     public void run() {
         switch (count){
             case -1:
+
                 galgeImg.setImageResource(R.drawable.galge);
                 break;
             case 0:
