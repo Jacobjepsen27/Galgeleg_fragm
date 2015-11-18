@@ -39,7 +39,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
         if(savedInstanceState == null) {
             gl = new Galgelogik();
             gl.nulstil();
-        }
+
             difficult = (Button) rod.findViewById(R.id.difButton);
             difficult.setOnClickListener(this);
 
@@ -61,7 +61,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
 
             start.setAnimation(animation);
             start.setOnClickListener(this);
-
+        }
         startRunning(500);
 
         return rod;
@@ -80,9 +80,10 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
             //startActivity(i);
             //&overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         } else if (v==difficult){
-            //Intent difficulty = new Intent(this, Svaerhedsgrad.class);
-            //startActivity(difficulty);
-            //overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentindhold, new Svaerhedsgrad())
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 
