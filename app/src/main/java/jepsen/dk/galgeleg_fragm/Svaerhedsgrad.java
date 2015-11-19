@@ -42,15 +42,13 @@ public class Svaerhedsgrad extends Fragment {
                     Toast.makeText(getContext(), "Sværhedsgrad sat til svær", Toast.LENGTH_SHORT).show();
                 }
                     Velkomst_frag.gl.saetsvaerhedsgrad(position + 1);
+
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentindhold, new Velkomst_frag())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
-        //listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-          //  @Override
-          //  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-          //      Toast.makeText(getContext(),"Der blev trykket på "+position, Toast.LENGTH_SHORT);
-
-          //  }
-      //  });
 
         return rod;
     }
