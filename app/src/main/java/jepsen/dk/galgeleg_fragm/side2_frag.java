@@ -106,6 +106,10 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
 
         // Tjek om spillet er slut
         if (Velkomst_frag.gl.erSpilletSlut()){
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentindhold, new AfsluttetSpil_frag())
+                    .addToBackStack(null)
+                    .commit();
         //    Intent i = new Intent(this, side3_akt.class);
          //   startActivity(i);
          //   overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
