@@ -38,7 +38,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
 
         if(savedInstanceState == null) {
             gl = new Galgelogik();
-            gl.nulstil();
+            //gl.nulstil();
 
             difficult = (Button) rod.findViewById(R.id.difButton);
             difficult.setOnClickListener(this);

@@ -69,7 +69,7 @@ public class Galgelogik {
     muligeOrd.add("gangsti");
     muligeOrd.add("skovsnegl");
     muligeOrd.add("solsort");
-    nulstil();
+    //nulstil();
   }
 
   public void nulstil() {
