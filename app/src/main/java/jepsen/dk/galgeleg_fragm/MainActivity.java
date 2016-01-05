@@ -10,11 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 
+import com.parse.Parse;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Parse.initialize(this);
         setContentView(R.layout.fragment_main);
 
         if(savedInstanceState == null){

@@ -14,6 +14,8 @@ import android.view.animation.AnimationSet;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.parse.ParseObject;
+
 /**
  * A placeholder fragment containing a simple view.
  */

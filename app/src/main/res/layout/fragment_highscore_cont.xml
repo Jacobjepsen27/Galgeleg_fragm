@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,18 +17,20 @@
         <fragment
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="7"
+            android:layout_weight="8"
             android:name="jepsen.dk.galgeleg_fragm.highscore_frag"
             android:id="@+id/fragment"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            tools:layout="@layout/fragment_highscore_frag" />
 
         <fragment
             android:layout_width="match_parent"
             android:layout_height="0px"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:name="jepsen.dk.galgeleg_fragm.name_frag"
             android:id="@+id/fragment2"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            tools:layout="@layout/fragment_name_frag" />
     </LinearLayout>
 
 

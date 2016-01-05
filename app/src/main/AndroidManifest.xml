@@ -3,6 +3,7 @@
     package="jepsen.dk.galgeleg_fragm" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.parse.APPLICATION_ID"
+            android:value="j2WxuGATjIwUXf9eUTKHS42ddlb5WQ5rOrdsyCQ2" />
+
+        <meta-data
+            android:name="com.parse.CLIENT_KEY"
+            android:value="XINHYK6cYIBUmoJll9wa9UwOIkddEX3u00gmsrAr" />
+
     </application>
 
 </manifest>
