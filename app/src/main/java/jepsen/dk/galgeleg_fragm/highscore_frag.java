@@ -66,12 +66,12 @@ public class highscore_frag extends Fragment {
 //                        j++;
 //                        for (int i = 0; i < scoreInt.length - j; i++) {
 //                            if (scoreInt[i] < scoreInt[i + 1]) {
-//                                tmpI = scoreInt[i];
-//                                tmpS = navn[i];
-//                                scoreInt[i] = scoreInt[i + 1];
-//                                navn[i] = navn[i + 1];
-//                                scoreInt[i + 1] = tmpI;
-//                                navn[i + 1] = tmpS;
+//                                tmpI = scoreInt[i+1];
+//                                tmpS = navn[i+1];
+//                                scoreInt[i+1] = scoreInt[i];
+//                                navn[i+1] = navn[i];
+//                                scoreInt[i] = tmpI;
+//                                navn[i] = tmpS;
 //                                swapped = true;
 //                            }
 //                        }
