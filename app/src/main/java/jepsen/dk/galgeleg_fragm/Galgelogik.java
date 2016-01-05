@@ -1,5 +1,6 @@
 package jepsen.dk.galgeleg_fragm;
 
+import android.os.Handler;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -10,8 +11,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class Galgelogik {
+public class Galgelogik implements Runnable{
   private ArrayList<String> muligeOrd = new ArrayList<String>();
   private ArrayList<String> nemmeOrd = new ArrayList<String>();
   private ArrayList<String> middelOrd = new ArrayList<String>();
@@ -23,6 +26,8 @@ public class Galgelogik {
   private boolean sidsteBogstavVarKorrekt;
   private boolean spilletErVundet;
   private boolean spilletErTabt;
+  private double tid=0;
+  private Handler handler = new Handler();
 
   public static int svaerhedsgrad = 0;
 
@@ -102,14 +107,19 @@ public class Galgelogik {
   }
 
   public void gætBogstav(String bogstav) throws Exception {
+    logStatus();
     if (bogstav.length() != 1)
       throw new Exception("Indtast ét bogstav");
     System.out.println("Der gættes på bogstavet: " + bogstav);
     if (brugteBogstaver.contains(bogstav))
       throw new Exception("Du har gættet på det bogstav før");
-    if (spilletErVundet || spilletErTabt)
+    if(brugteBogstaver.isEmpty()) {
+      Log.d("Starttid", "tiden er startet");
+      handler.postDelayed(this, 100);
+    }
+    if (spilletErVundet || spilletErTabt) {
       throw new Exception("Spillet er slut, du kan ikke gætte mere.");
-
+    }
     brugteBogstaver.add(bogstav);
 
     if (ordet.contains(bogstav)) {
@@ -125,6 +135,11 @@ public class Galgelogik {
       }
     }
     opdaterSynligtOrd();
+    if(erSpilletSlut()){
+      handler.removeCallbacks(this);
+      Log.d("ehj", Double.toString(tid));
+    }
+
   }
 
   public void logStatus() {
@@ -203,5 +218,11 @@ public class Galgelogik {
     private int highscore(){
        return 0;
     }
+
+  @Override
+  public void run() {
+    tid=tid+0.1;
+    handler.postDelayed(this, 100);
+  }
 }
 
