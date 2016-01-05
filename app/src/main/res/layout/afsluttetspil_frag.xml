@@ -43,4 +43,11 @@
         android:layout_above="@+id/ord2"
         android:textSize="25dp"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/highscoreButton"
+        android:layout_above="@+id/againButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

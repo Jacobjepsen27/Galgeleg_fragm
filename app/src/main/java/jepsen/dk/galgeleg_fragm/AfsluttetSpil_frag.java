@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener{
 
     private ViewGroup rod;
-    private Button again;
+    private Button again, highscore;
     private TextView status, ordet, tabt;
 
     public View onCreateView(LayoutInflater i, ViewGroup container,Bundle savedInstanceState) {
@@ -29,13 +29,17 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
             status = (TextView) rod.findViewById(R.id.ord);
             ordet = (TextView) rod.findViewById(R.id.ord2);
             tabt = (TextView) rod.findViewById(R.id.ordetVar);
+            highscore = (Button) rod.findViewById(R.id.highscoreButton);
+            highscore.setOnClickListener(this);
 
             if (Velkomst_frag.gl.erSpilletTabt()) {
                 tabt.setText("Ordet var:");
                 status.setText("Du har tabt!");
+                highscore.setText("Se highscore");
             } else if (Velkomst_frag.gl.erSpilletVundet()) {
                 tabt.setText("Du gættede:");
                 status.setText("Du har vundet!");
+                highscore.setText("Gem highscore");
             }
             ordet.setText(Velkomst_frag.gl.getOrdet());
 
@@ -51,7 +55,8 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
                     .addToBackStack(null)
                     .commit();
 
-    }
+    } else if (v==highscore){
 
+        }
 }
 }

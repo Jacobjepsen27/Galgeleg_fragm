@@ -26,7 +26,7 @@ public class Galgelogik implements Runnable{
   private boolean sidsteBogstavVarKorrekt;
   private boolean spilletErVundet;
   private boolean spilletErTabt;
-  private double tid=0;
+  private double tid=0, highscore;
   private Handler handler = new Handler();
 
   public static int svaerhedsgrad = 0;
@@ -137,7 +137,8 @@ public class Galgelogik implements Runnable{
     opdaterSynligtOrd();
     if(erSpilletSlut()){
       handler.removeCallbacks(this);
-      Log.d("ehj", Double.toString(tid));
+      Log.d("ehj", Double.toString(highscore()));
+      Log.d("testt", Integer.toString(svaerhedsgrad));
     }
 
   }
@@ -215,8 +216,9 @@ public class Galgelogik implements Runnable{
     return retur;
   }
 
-    private int highscore(){
-       return 0;
+    private double highscore(){
+      highscore = (tid/(double)(antalForkerteBogstaver+1))*((double)svaerhedsgrad);
+      return highscore;
     }
 
   @Override
