@@ -1,18 +1,35 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="jepsen.dk.galgeleg_fragm.highscore_frag">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/highView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:choiceMode="singleChoice" />
+        <ListView
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/highViewLeft"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:choiceMode="singleChoice" />
+
+        <ListView
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/highViewRight"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:choiceMode="singleChoice" />
+
+    </LinearLayout>
 
 
-
-</RelativeLayout>
+</TableLayout>

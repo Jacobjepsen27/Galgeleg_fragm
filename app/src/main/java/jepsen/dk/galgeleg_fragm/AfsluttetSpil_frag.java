@@ -49,14 +49,17 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v==again){
-            Velkomst_frag.gl.saetsvaerhedsgrad(0);
+            //Velkomst_frag.gl.saetsvaerhedsgrad(0);
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, new Velkomst_frag())
                     .addToBackStack(null)
                     .commit();
 
     } else if (v==highscore){
-
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentindhold, new highscore_cont())
+                    .addToBackStack(null)
+                    .commit();
         }
 }
 }
