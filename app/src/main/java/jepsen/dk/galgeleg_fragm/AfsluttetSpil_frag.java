@@ -56,10 +56,17 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
                     .commit();
 
     } else if (v==highscore){
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentindhold, new highscore_cont())
-                    .addToBackStack(null)
-                    .commit();
+            if(Velkomst_frag.gl.erSpilletVundet()) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentindhold, new highscore_cont())
+                        .addToBackStack(null)
+                        .commit();
+            } else if(Velkomst_frag.gl.erSpilletTabt()){
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentindhold, new highscore_frag())
+                        .addToBackStack(null)
+                        .commit();
+            }
         }
 }
 }
