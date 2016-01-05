@@ -199,5 +199,9 @@ public class Galgelogik {
     Log.i("Log", "Værdi: " + retur + " : Ord: " +ord );
     return retur;
   }
+
+    private int highscore(){
+       return 0;
+    }
 }
 

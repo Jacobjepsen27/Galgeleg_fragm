@@ -43,10 +43,13 @@ public class Svaerhedsgrad extends Fragment {
                 }
                     Velkomst_frag.gl.saetsvaerhedsgrad(position + 1);
 
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentindhold, new Velkomst_frag())
-                        .addToBackStack(null)
-                        .commit();
+                getFragmentManager().popBackStack();
+
+
+                //getActivity().getSupportFragmentManager().beginTransaction()
+                 //       .replace(R.id.fragmentindhold, new Velkomst_frag())
+                   //     .addToBackStack(null)
+                     //   .commit();
             }
         });
 
