@@ -44,12 +44,6 @@ public class Svaerhedsgrad extends Fragment {
                 SingleTon.getGlInstance().saetsvaerhedsgrad(position + 1);
                 SingleTon.getGlInstance().nulstil();
                 getFragmentManager().popBackStack();
-
-
-                //getActivity().getSupportFragmentManager().beginTransaction()
-                 //       .replace(R.id.fragmentindhold, new Velkomst_frag())
-                   //     .addToBackStack(null)
-                     //   .commit();
             }
         });
 

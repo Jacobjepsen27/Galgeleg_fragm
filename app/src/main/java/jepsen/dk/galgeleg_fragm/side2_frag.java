@@ -45,36 +45,9 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
             gæt = (Button) rod.findViewById(R.id.gætButton);
             gæt.setOnClickListener(this);
             gæt.setAnimation(Velkomst_frag.animation);
-
-            //Velkomst_akt.gl.nulstil(); // Fra version 1
-            //hentOrd(); // Version 2 vha. asynctask
-
-            //txt.setText("");
-            //Toast.makeText(getContext(), "Henter tekst fra the webz", Toast.LENGTH_SHORT).show();
         }
 
         return rod;
-    }
-
-
-    private void hentOrd(){
-        new AsyncTask(){
-
-            @Override
-            protected Object doInBackground(Object[] params) {
-                try {
-                    SingleTon.getGlInstance().hentOrdFraDr();
-                    return "Ordene blev hentet!";
-                } catch (Exception e){
-                    return "Der skete en fejl!";
-                }
-            }
-
-            @Override
-            protected void onPostExecute(Object result){
-                txt.setText(SingleTon.getGlInstance().getSynligtOrd());
-            }
-        }.execute();
     }
 
     @Override
@@ -111,10 +84,6 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
                     .replace(R.id.fragmentindhold, new AfsluttetSpil_frag())
                     .addToBackStack(null)
                     .commit();
-        //    Intent i = new Intent(this, side3_akt.class);
-         //   startActivity(i);
-         //   overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-         //   finish(); // Slutter aktiviteten så man ikke kan trykke på "tilbage"-knap for at se denne aktivitet
         }
     }
 
