@@ -39,6 +39,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
             editTxt = (EditText) rod.findViewById(R.id.bogstavEditText);
             editTxt.setOnKeyListener(this);
             txt = (TextView) rod.findViewById(R.id.ordTextView);
+            txt.setText(SingleTon.getGlInstance().getSynligtOrd());
             bogstaver = (TextView) rod.findViewById(R.id.tidligereGætTextView);
             bString = bogstaver.getText().toString();
             gæt = (Button) rod.findViewById(R.id.gætButton);
@@ -46,10 +47,10 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
             gæt.setAnimation(Velkomst_frag.animation);
 
             //Velkomst_akt.gl.nulstil(); // Fra version 1
-            hentOrd(); // Version 2 vha. asynctask
+            //hentOrd(); // Version 2 vha. asynctask
 
-            txt.setText("");
-            Toast.makeText(getContext(), "Henter tekst fra the webz", Toast.LENGTH_SHORT).show();
+            //txt.setText("");
+            //Toast.makeText(getContext(), "Henter tekst fra the webz", Toast.LENGTH_SHORT).show();
         }
 
         return rod;
@@ -62,7 +63,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
             @Override
             protected Object doInBackground(Object[] params) {
                 try {
-                    Velkomst_frag.gl.hentOrdFraDr();
+                    SingleTon.getGlInstance().hentOrdFraDr();
                     return "Ordene blev hentet!";
                 } catch (Exception e){
                     return "Der skete en fejl!";
@@ -71,7 +72,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
 
             @Override
             protected void onPostExecute(Object result){
-                txt.setText(Velkomst_frag.gl.getSynligtOrd());
+                txt.setText(SingleTon.getGlInstance().getSynligtOrd());
             }
         }.execute();
     }
@@ -83,7 +84,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
 
         // Gæt på et bogstav og håndter fejlsituationer (ugyldige gæt)
         try {
-            Velkomst_frag.gl.gætBogstav(bogstav);
+            SingleTon.getGlInstance().gætBogstav(bogstav);
         } catch (Exception e){
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show(); // Viser en lille popup med fejltekst fra Galgelogik
             return;
@@ -91,21 +92,21 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
 
         // Opdater listen af gættede bogstaver
         String bogstavGæt = "";
-        for (String s  : Velkomst_frag.gl.getBrugteBogstaver()){
+        for (String s  : SingleTon.getGlInstance().getBrugteBogstaver()){
             bogstavGæt += s + ", " ;
         }
         bogstaver.setText(bString + bogstavGæt);
 
         // Opdater det synlige ord
-        txt.setText(Velkomst_frag.gl.getSynligtOrd());
+        txt.setText(SingleTon.getGlInstance().getSynligtOrd());
 
         // Opdater billede hvis sidste gæt er forkert
-        if (!Velkomst_frag.gl.erSidsteBogstavKorrekt()){
+        if (!SingleTon.getGlInstance().erSidsteBogstavKorrekt()){
             updateImg();
         }
 
         // Tjek om spillet er slut
-        if (Velkomst_frag.gl.erSpilletSlut()){
+        if (SingleTon.getGlInstance().erSpilletSlut()){
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, new AfsluttetSpil_frag())
                     .addToBackStack(null)
@@ -119,7 +120,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
 
     // Opdaterer billedet mht. antal gæt der er brugt
     public void updateImg(){
-        switch (Velkomst_frag.gl.getAntalForkerteBogstaver()) {
+        switch (SingleTon.getGlInstance().getAntalForkerteBogstaver()) {
             case 0:
                 img.setImageResource(R.drawable.galge);
                 break;

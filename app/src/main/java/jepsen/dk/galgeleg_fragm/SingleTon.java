@@ -1,6 +1,7 @@
 package jepsen.dk.galgeleg_fragm;
 
 import android.app.Application;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.parse.FindCallback;
@@ -31,6 +32,7 @@ public class SingleTon extends Application{
 
     public void onCreate(){
         super.onCreate();
+        hentOrd();
         Parse.initialize(this);
         Log.d("PARSE_START", "STARTER");
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("HiScore");
@@ -89,5 +91,20 @@ public class SingleTon extends Application{
             }
         });
 
+    }
+
+    public void hentOrd(){
+        new AsyncTask(){
+
+            @Override
+            protected Object doInBackground(Object[] params) {
+                try {
+                    gl.hentOrdFraDr();
+                    return "Ordene blev hentet!";
+                } catch (Exception e){
+                    return "Der skete en fejl!";
+                }
+            }
+        }.execute();
     }
 }

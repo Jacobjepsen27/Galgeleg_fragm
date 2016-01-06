@@ -32,16 +32,16 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
             highscore = (Button) rod.findViewById(R.id.highscoreButton);
             highscore.setOnClickListener(this);
 
-            if (Velkomst_frag.gl.erSpilletTabt()) {
+            if (SingleTon.getGlInstance().erSpilletTabt()) {
                 tabt.setText("Ordet var:");
                 status.setText("Du har tabt!");
                 highscore.setText("Se highscore");
-            } else if (Velkomst_frag.gl.erSpilletVundet()) {
+            } else if (SingleTon.getGlInstance().erSpilletVundet()) {
                 tabt.setText("Du gættede:");
                 status.setText("Du har vundet!");
                 highscore.setText("Gem highscore");
             }
-            ordet.setText(Velkomst_frag.gl.getOrdet());
+            ordet.setText(SingleTon.getGlInstance().getOrdet());
 
         return rod;
     }
@@ -50,18 +50,19 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         if (v==again){
             //Velkomst_frag.gl.saetsvaerhedsgrad(0);
+            SingleTon.getGlInstance().nulstil();
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, new Velkomst_frag())
                     .addToBackStack(null)
                     .commit();
 
     } else if (v==highscore){
-            if(Velkomst_frag.gl.erSpilletVundet()) {
+            if(SingleTon.getGlInstance().erSpilletVundet()) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.fragmentindhold, new highscore_cont())
                         .addToBackStack(null)
                         .commit();
-            } else if(Velkomst_frag.gl.erSpilletTabt()){
+            } else if(SingleTon.getGlInstance().erSpilletTabt()){
                 getFragmentManager().beginTransaction()
                         .replace(R.id.fragmentindhold, new highscore_frag())
                         .addToBackStack(null)

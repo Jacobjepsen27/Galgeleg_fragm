@@ -30,7 +30,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
 
     private ViewGroup rod;
 
-    static Galgelogik gl;
+    //static Galgelogik gl;
     static AnimationSet animation;
 
     @Override
@@ -39,9 +39,9 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
         rod = (ViewGroup) i.inflate(R.layout.velkomst_frag, container, false);
 
         if(savedInstanceState == null) {
-            gl = new Galgelogik();
+            //gl = new Galgelogik();
             //gl.nulstil();
-            gl.saetsvaerhedsgrad(1);
+            SingleTon.getGlInstance().saetsvaerhedsgrad(1);
             difficult = (Button) rod.findViewById(R.id.difButton);
             difficult.setOnClickListener(this);
 
