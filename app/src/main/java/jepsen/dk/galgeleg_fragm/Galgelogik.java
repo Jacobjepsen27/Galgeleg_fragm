@@ -74,6 +74,7 @@ public class Galgelogik{
     muligeOrd.add("gangsti");
     muligeOrd.add("skovsnegl");
     muligeOrd.add("solsort");
+    saetsvaerhedsgrad(2);
     //nulstil();
   }
 
@@ -138,8 +139,8 @@ public class Galgelogik{
     if(erSpilletSlut()){
       slut = System.currentTimeMillis();
       delta = slut - start;
-      Log.d("ehj", Double.toString(highscore()));
-      Log.d("testt", Integer.toString(svaerhedsgrad));
+      Log.d("HIGHSCORE", Double.toString(highscore()));
+      Log.d("SVÆRHEDSGRAD", Integer.toString(svaerhedsgrad));
     }
 
   }

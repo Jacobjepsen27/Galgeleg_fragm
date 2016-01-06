@@ -42,7 +42,7 @@ public class Svaerhedsgrad extends Fragment {
                     Toast.makeText(getContext(), "Sværhedsgrad sat til svær", Toast.LENGTH_SHORT).show();
                 }
                 SingleTon.getGlInstance().saetsvaerhedsgrad(position + 1);
-
+                SingleTon.getGlInstance().nulstil();
                 getFragmentManager().popBackStack();
 
 

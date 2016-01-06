@@ -39,9 +39,6 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
         rod = (ViewGroup) i.inflate(R.layout.velkomst_frag, container, false);
 
         if(savedInstanceState == null) {
-            //gl = new Galgelogik();
-            //gl.nulstil();
-            SingleTon.getGlInstance().saetsvaerhedsgrad(1);
             difficult = (Button) rod.findViewById(R.id.difButton);
             difficult.setOnClickListener(this);
 
