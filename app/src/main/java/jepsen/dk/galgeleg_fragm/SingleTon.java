@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -19,6 +20,8 @@ public class SingleTon extends Application{
     public static SingleTon getInstance() {
         return ourInstance;
     }
+    public static Galgelogik gl = new Galgelogik();
+    public static Galgelogik getGlInstance() { return gl; };
     public static String[] navn;
     public static String[] score;
     public static Integer[] scoreInt;
@@ -28,10 +31,14 @@ public class SingleTon extends Application{
 
     public void onCreate(){
         super.onCreate();
+        Parse.initialize(this);
+        Log.d("PARSE_START", "STARTER");
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("HiScore");
+        Log.d("PARSE_STARTET", "STARTET");
         query2.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> scoreList, ParseException e) {
                 if (e == null) {
+                    Log.d("INGEN_EXCEPTION", "INGEN EXCEPTION");
                     scoreInt = new Integer[scoreList.size()];
                     score = new String[scoreList.size()];
                     navn = new String[scoreList.size()];
@@ -76,6 +83,7 @@ public class SingleTon extends Application{
                     //String [] scoreShow = {score[0],score[1],score[2],score[3],score[4],score[5],score[6],score[7]};
 
                 } else {
+                    Log.d("PARSE_EXCEPTION", "DER ER SKET EN FEJL");
                     Log.d("score", "Error: " + e.getMessage());
                 }
             }
