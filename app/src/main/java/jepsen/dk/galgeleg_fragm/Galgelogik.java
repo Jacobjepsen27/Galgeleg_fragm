@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Galgelogik implements Runnable{
+public class Galgelogik{
   private ArrayList<String> muligeOrd = new ArrayList<String>();
   private ArrayList<String> nemmeOrd = new ArrayList<String>();
   private ArrayList<String> middelOrd = new ArrayList<String>();
@@ -26,8 +26,8 @@ public class Galgelogik implements Runnable{
   private boolean sidsteBogstavVarKorrekt;
   private boolean spilletErVundet;
   private boolean spilletErTabt;
-  private double tid=0, highscore;
-  private Handler handler = new Handler();
+  private double highscore;
+  private long start, slut, delta;
 
   public static int svaerhedsgrad = 0;
 
@@ -115,7 +115,7 @@ public class Galgelogik implements Runnable{
       throw new Exception("Du har gættet på det bogstav før");
     if(brugteBogstaver.isEmpty()) {
       Log.d("Starttid", "tiden er startet");
-      handler.postDelayed(this, 100);
+      start = System.currentTimeMillis();
     }
     if (spilletErVundet || spilletErTabt) {
       throw new Exception("Spillet er slut, du kan ikke gætte mere.");
@@ -136,7 +136,8 @@ public class Galgelogik implements Runnable{
     }
     opdaterSynligtOrd();
     if(erSpilletSlut()){
-      handler.removeCallbacks(this);
+      slut = System.currentTimeMillis();
+      delta = slut - start;
       Log.d("ehj", Double.toString(highscore()));
       Log.d("testt", Integer.toString(svaerhedsgrad));
     }
@@ -217,14 +218,8 @@ public class Galgelogik implements Runnable{
   }
 
     private double highscore(){
-      highscore = (tid/(double)(antalForkerteBogstaver+1))*((double)svaerhedsgrad);
+      highscore = (delta/(double)(antalForkerteBogstaver+1))*((double)svaerhedsgrad);
       return highscore;
     }
-
-  @Override
-  public void run() {
-    tid=tid+0.1;
-    handler.postDelayed(this, 100);
-  }
 }
 
