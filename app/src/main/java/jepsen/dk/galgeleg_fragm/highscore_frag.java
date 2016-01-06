@@ -57,32 +57,32 @@ public class highscore_frag extends Fragment {
                         navn[i] = scoreList.get(i).getString("navn");
                     }
 
-//                    boolean swapped = true;
-//                    int j = 0;
-//                    int tmpI;
-//                    String tmpS;
-//                    while (swapped) {
-//                        swapped = false;
-//                        j++;
-//                        for (int i = 0; i < scoreInt.length - j; i++) {
-//                            if (scoreInt[i] < scoreInt[i + 1]) {
-//                                tmpI = scoreInt[i+1];
-//                                tmpS = navn[i+1];
-//                                scoreInt[i+1] = scoreInt[i];
-//                                navn[i+1] = navn[i];
-//                                scoreInt[i] = tmpI;
-//                                navn[i] = tmpS;
-//                                swapped = true;
-//                            }
-//                        }
-//                    }
+                    boolean swapped = true;
+                    int j = 0;
+                    int tmpI;
+                    String tmpS;
+                    while (swapped) {
+                        swapped = false;
+                        j++;
+                        for (int i = 0; i < scoreInt.length - j; i++) {
+                            if (scoreInt[i] < scoreInt[i + 1]) {
+                                tmpI = scoreInt[i+1];
+                                tmpS = navn[i+1];
+                                scoreInt[i+1] = scoreInt[i];
+                                navn[i+1] = navn[i];
+                                scoreInt[i] = tmpI;
+                                navn[i] = tmpS;
+                                swapped = true;
+                            }
+                        }
+                    }
 
                     for (int i = 0; scoreInt.length > i; i++) {
                         score[i] = scoreInt[i].toString();
                     }
 
-                    String [] navnShow = {navn[0],navn[1],navn[2],navn[3],navn[4],navn[5]};
-                    String [] scoreShow = {score[0],score[1],score[2],score[3],score[4],score[5]};
+                    String [] navnShow = {navn[0],navn[1],navn[2],navn[3],navn[4],navn[5],navn[6],navn[7]};
+                    String [] scoreShow = {score[0],score[1],score[2],score[3],score[4],score[5],score[6],score[7]};
 
                     adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, navnShow);
                     left.setAdapter(adapter1);
