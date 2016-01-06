@@ -19,6 +19,7 @@ public class name_frag extends Fragment implements View.OnClickListener{
 
     private Button gem;
     private TextView name;
+    private String navn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +37,8 @@ public class name_frag extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        navn = name.getText().toString();
+
 
     }
 }
