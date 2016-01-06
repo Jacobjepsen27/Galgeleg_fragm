@@ -26,7 +26,7 @@ public class Galgelogik{
   private boolean sidsteBogstavVarKorrekt;
   private boolean spilletErVundet;
   private boolean spilletErTabt;
-  private double highscore;
+  private long highscore;
   private long start, slut, delta;
 
   public static int svaerhedsgrad = 0;
@@ -63,6 +63,8 @@ public class Galgelogik{
   public boolean erSpilletSlut() {
     return spilletErTabt || spilletErVundet;
   }
+
+  public long getScore() { return highscore; };
 
 
   public Galgelogik() {
@@ -218,8 +220,8 @@ public class Galgelogik{
     return retur;
   }
 
-    private double highscore(){
-      highscore = (delta/(double)(antalForkerteBogstaver+1))*((double)svaerhedsgrad);
+    private long highscore(){
+      highscore = (delta/(antalForkerteBogstaver+1))*(svaerhedsgrad);
       return highscore;
     }
 }

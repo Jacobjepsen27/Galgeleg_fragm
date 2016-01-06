@@ -3,6 +3,7 @@ package jepsen.dk.galgeleg_fragm;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +81,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
 
         // Tjek om spillet er slut
         if (SingleTon.getGlInstance().erSpilletSlut()){
+            //Log.d("SCOREN i int", Integer.toString((int) Math.round(SingleTon.getGlInstance().getScore())));
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, new AfsluttetSpil_frag())
                     .addToBackStack(null)
