@@ -10,6 +10,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -28,12 +29,84 @@ public class SingleTon extends Application{
     public static Integer[] scoreInt;
     public static String [] navnShow = new String[8];
     public static String [] scoreShow = new String[8];
+    public static String [] tempNavn;
+    public static Integer [] tempScoreInt;
+    public static String [] tempScore;
+    public static String [] tempNavnShow = new String[8];
+    public static String [] tempScoreShow = new String[8];
 
 
     public void onCreate(){
         super.onCreate();
         hentOrd();
         Parse.initialize(this);
+        hentScore();
+
+
+    }
+
+    public void tempHighscore(String name){
+        tempScoreInt = new Integer[scoreInt.length];
+        tempScore = new String[score.length];
+        tempNavn = new String[navn.length];
+
+        for (int i = 0; navnShow.length > i; i++) {
+            tempScoreInt[i] = Integer.parseInt(scoreShow[i]);
+            tempNavn[i] = navnShow[i];
+        }
+        tempNavn[7]=name;
+        tempScoreInt[7]=Integer.valueOf(Long.toString(this.getGlInstance().highscore));
+
+        boolean swapped = true;
+        int j = 0;
+        int tmpI;
+        String tmpS;
+        while (swapped) {
+            swapped = false;
+            j++;
+            for (int i = 0; i < tempScore.length - j; i++) {
+                if (tempScoreInt[i] < tempScoreInt[i + 1]) {
+                    tmpI = tempScoreInt[i + 1];
+                    tmpS = tempNavn[i + 1];
+                    tempScoreInt[i + 1] = tempScoreInt[i];
+                    tempNavn[i + 1] = tempNavn[i];
+                    tempScoreInt[i] = tmpI;
+                    tempNavn[i] = tmpS;
+                    swapped = true;
+                }
+            }
+        }
+
+        for (int i = 0; scoreInt.length > i; i++) {
+            tempScore[i] = tempScoreInt[i].toString();
+        }
+
+        //nye array-udfyldning
+        for (int i = 0; tempNavnShow.length > i; i++) {
+            tempNavnShow[i] = tempNavn[i];
+            tempScoreShow[i] = tempScore[i];
+        }
+
+
+
+    }
+
+    public void hentOrd(){
+        new AsyncTask(){
+
+            @Override
+            protected Object doInBackground(Object[] params) {
+                try {
+                    gl.hentOrdFraDr();
+                    return "Ordene blev hentet!";
+                } catch (Exception e){
+                    return "Der skete en fejl!";
+                }
+            }
+        }.execute();
+    }
+
+    public void hentScore(){
         Log.d("PARSE_START", "STARTER");
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("HiScore");
         Log.d("PARSE_STARTET", "STARTET");
@@ -90,21 +163,7 @@ public class SingleTon extends Application{
                 }
             }
         });
-
     }
 
-    public void hentOrd(){
-        new AsyncTask(){
 
-            @Override
-            protected Object doInBackground(Object[] params) {
-                try {
-                    gl.hentOrdFraDr();
-                    return "Ordene blev hentet!";
-                } catch (Exception e){
-                    return "Der skete en fejl!";
-                }
-            }
-        }.execute();
-    }
 }

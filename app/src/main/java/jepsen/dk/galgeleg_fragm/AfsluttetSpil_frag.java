@@ -35,14 +35,13 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
             highscore.setOnClickListener(this);
 
         Log.d("HIGHSCORE", Long.toString(SingleTon.getGlInstance().getScore()));
-        Log.d("DELTA", Long.toString(SingleTon.getGlInstance().getDelta()));
             if (SingleTon.getGlInstance().erSpilletTabt()) {
                 tabt.setText("Ordet var: " + "\n" + SingleTon.getGlInstance().getOrdet() );
                 status.setText("Du har tabt!");
                 hs.setText("Du fik " + Long.toString(SingleTon.getGlInstance().getScore()) + " point");
                 highscore.setText("Se highscore");
             } else if (SingleTon.getGlInstance().erSpilletVundet()) {
-                if(SingleTon.getGlInstance().inHighscore()==true) {
+                if(Galgelogik.inHighscore()==true) {
                     tabt.setText("Du gættede:" + "\n" + SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
                     hs.setText("Du fik " + Long.toString(SingleTon.getGlInstance().getScore()) + " point");
@@ -70,7 +69,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
                     .commit();
 
     } else if (v==highscore){
-            if(SingleTon.getGlInstance().erSpilletVundet() && SingleTon.getGlInstance().inHighscore()) {
+            if(SingleTon.getGlInstance().erSpilletVundet() && Galgelogik.inHighscore()) {
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragmentindhold, new highscore_cont())
                             .addToBackStack(null)
