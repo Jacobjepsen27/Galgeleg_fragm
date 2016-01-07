@@ -66,6 +66,8 @@ public class Galgelogik{
 
   public long getScore() { return highscore; };
 
+  public long getDelta() {return delta;}
+
 
   public Galgelogik() {
     muligeOrd.add("bil");
@@ -221,7 +223,7 @@ public class Galgelogik{
   }
 
     private long highscore(){
-      highscore = (((svaerhedsgrad)*1000)/((antalForkerteBogstaver+1)*delta));
+      highscore = (((svaerhedsgrad)*1000000)/((antalForkerteBogstaver+1)*delta));
       return highscore;
     }
 

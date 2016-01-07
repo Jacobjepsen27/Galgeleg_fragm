@@ -24,6 +24,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
         rod = (ViewGroup) i.inflate(R.layout.afsluttetspil_frag, container, false);
 
 
+
             again = (Button) rod.findViewById(R.id.againButton);
             again.setOnClickListener(this);
             again.setAnimation(Velkomst_frag.animation);
@@ -34,6 +35,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
             highscore.setOnClickListener(this);
 
         Log.d("HIGHSCORE", Long.toString(SingleTon.getGlInstance().getScore()));
+        Log.d("DELTA", Long.toString(SingleTon.getGlInstance().getDelta()));
             if (SingleTon.getGlInstance().erSpilletTabt()) {
                 tabt.setText("Ordet var:");
                 status.setText("Du har tabt!");
