@@ -20,10 +20,11 @@ public class Spil_igen extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        inflater.inflate(R.layout.fragment_spil_igen, container, false);
 
-        again = (Button) rod.findViewById(R.id.againButton);
+        // Inflate the layout for this fragment
+        rod = (ViewGroup) inflater.inflate(R.layout.fragment_spil_igen, container, false);
+
+        again = (Button) rod.findViewById(R.id.playAgain);
         again.setOnClickListener(this);
 
         return rod;

@@ -38,7 +38,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
                 status.setText("Du har tabt!");
                 highscore.setText("Se highscore");
             } else if (SingleTon.getGlInstance().erSpilletVundet()) {
-                if(Galgelogik.inHighscore()==true) {
+                if(SingleTon.getGlInstance().inHighscore()==true) {
                     tabt.setText("Du gættede:");
                     status.setText("Du har vundet!");
                     highscore.setText("Gem highscore");
@@ -64,14 +64,14 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
                     .commit();
 
     } else if (v==highscore){
-            if(SingleTon.getGlInstance().erSpilletVundet()) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentindhold, new highscore_cont())
-                        .addToBackStack(null)
-                        .commit();
+            if(SingleTon.getGlInstance().erSpilletVundet() && SingleTon.getGlInstance().inHighscore()) {
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragmentindhold, new highscore_cont())
+                            .addToBackStack(null)
+                            .commit();
             } else if(SingleTon.getGlInstance().erSpilletTabt()){
                 getFragmentManager().beginTransaction()
-                        .replace(R.id.fragmentindhold, new highscore_frag())
+                        .replace(R.id.fragmentindhold, new highscore_view())
                         .addToBackStack(null)
                         .commit();
             }
