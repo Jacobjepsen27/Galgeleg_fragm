@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
 
+
         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="j2WxuGATjIwUXf9eUTKHS42ddlb5WQ5rOrdsyCQ2" />
