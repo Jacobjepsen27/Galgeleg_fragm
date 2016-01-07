@@ -17,7 +17,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
 
     private ViewGroup rod;
     private Button again, highscore;
-    private TextView status, ordet, tabt;
+    private TextView status, tabt, hs;
 
     public View onCreateView(LayoutInflater i, ViewGroup container,Bundle savedInstanceState) {
 
@@ -29,7 +29,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
             again.setOnClickListener(this);
             again.setAnimation(Velkomst_frag.animation);
             status = (TextView) rod.findViewById(R.id.ord);
-            ordet = (TextView) rod.findViewById(R.id.ord2);
+            hs = (TextView) rod.findViewById(R.id.ord3);
             tabt = (TextView) rod.findViewById(R.id.ordetVar);
             highscore = (Button) rod.findViewById(R.id.highscoreButton);
             highscore.setOnClickListener(this);
@@ -37,22 +37,24 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
         Log.d("HIGHSCORE", Long.toString(SingleTon.getGlInstance().getScore()));
         Log.d("DELTA", Long.toString(SingleTon.getGlInstance().getDelta()));
             if (SingleTon.getGlInstance().erSpilletTabt()) {
-                tabt.setText("Ordet var:");
+                tabt.setText("Ordet var: " + "\n" + SingleTon.getGlInstance().getOrdet() );
                 status.setText("Du har tabt!");
+                hs.setText("Du fik " + Long.toString(SingleTon.getGlInstance().getScore()) + " point");
                 highscore.setText("Se highscore");
             } else if (SingleTon.getGlInstance().erSpilletVundet()) {
                 if(SingleTon.getGlInstance().inHighscore()==true) {
-
-                    tabt.setText("Du gættede:");
+                    tabt.setText("Du gættede:" + "\n" + SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
+                    hs.setText("Du fik " + Long.toString(SingleTon.getGlInstance().getScore()) + " point");
                     highscore.setText("Gem highscore");
                 }
-                else{ tabt.setText("Du gættede:");
+                else{ tabt.setText("Du gættede:" + "\n" + SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
+                    hs.setText("Du fik " + Long.toString(SingleTon.getGlInstance().getScore()) + " point");
                     highscore.setText("Se highscore");
                 }
             }
-            ordet.setText(SingleTon.getGlInstance().getOrdet());
+
 
         return rod;
     }
