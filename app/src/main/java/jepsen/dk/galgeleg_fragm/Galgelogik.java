@@ -26,7 +26,7 @@ public class Galgelogik{
   private boolean sidsteBogstavVarKorrekt;
   private boolean spilletErVundet;
   private boolean spilletErTabt;
-  private long highscore;
+  static long highscore;
   private long start, slut, delta;
 
   public static int svaerhedsgrad = 0;
@@ -224,5 +224,12 @@ public class Galgelogik{
       highscore = (delta/(antalForkerteBogstaver+1))*(svaerhedsgrad);
       return highscore;
     }
+
+  public static boolean inHighscore(){
+    if(highscore>SingleTon.scoreInt[7]){
+      return true;}
+    else return false;
+    }
+
 }
 

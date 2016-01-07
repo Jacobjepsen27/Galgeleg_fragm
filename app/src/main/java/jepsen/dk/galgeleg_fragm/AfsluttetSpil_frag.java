@@ -2,6 +2,7 @@ package jepsen.dk.galgeleg_fragm;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +38,15 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
                 status.setText("Du har tabt!");
                 highscore.setText("Se highscore");
             } else if (SingleTon.getGlInstance().erSpilletVundet()) {
-                tabt.setText("Du gættede:");
-                status.setText("Du har vundet!");
-                highscore.setText("Gem highscore");
+                if(Galgelogik.inHighscore()==true) {
+                    tabt.setText("Du gættede:");
+                    status.setText("Du har vundet!");
+                    highscore.setText("Gem highscore");
+                }
+                else{ tabt.setText("Du gættede:");
+                    status.setText("Du har vundet!");
+                    highscore.setText("Se highscore");
+                }
             }
             ordet.setText(SingleTon.getGlInstance().getOrdet());
 
