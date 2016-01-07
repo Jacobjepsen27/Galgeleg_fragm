@@ -113,6 +113,7 @@ public class Galgelogik{
 
   public void gætBogstav(String bogstav) throws Exception {
     logStatus();
+    validate(bogstav);
     if (bogstav.length() != 1)
       throw new Exception("Indtast ét bogstav");
     System.out.println("Der gættes på bogstavet: " + bogstav);
@@ -222,6 +223,9 @@ public class Galgelogik{
     return retur;
   }
 
+
+
+
     private long highscore(){
       highscore = (((svaerhedsgrad)*1000000)/((antalForkerteBogstaver+1)*delta));
       return highscore;
@@ -232,6 +236,15 @@ public class Galgelogik{
       return true;}
     else return false;
     }
+
+  public void validate(String input) throws Exception{
+    for(char s : input.toCharArray()) {
+      if (Character.isDigit(s)){
+        throw new Exception("Indsæt kun bogstaver");
+      }
+    }
+  }
+
 
 }
 

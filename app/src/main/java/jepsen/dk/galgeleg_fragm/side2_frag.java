@@ -125,4 +125,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
         }
         return false;
     }
+
+
+
 }
