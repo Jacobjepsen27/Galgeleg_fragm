@@ -221,12 +221,12 @@ public class Galgelogik{
   }
 
     private long highscore(){
-      highscore = (delta/(antalForkerteBogstaver+1))*(svaerhedsgrad);
+      highscore = (((svaerhedsgrad)*1000)/((antalForkerteBogstaver+1)*delta));
       return highscore;
     }
 
   public static boolean inHighscore(){
-    if(highscore>SingleTon.scoreInt[7]){
+    if(highscore> SingleTon.scoreInt[7]){
       return true;}
     else return false;
     }
