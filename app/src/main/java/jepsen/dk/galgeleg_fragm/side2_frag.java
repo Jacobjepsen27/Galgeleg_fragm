@@ -64,6 +64,10 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
             return;
         }
 
+        //test funktioner
+        SingleTon.getGlInstance().setStatus(true);
+        SingleTon.getGlInstance().setHighscore(50);
+
         // Opdater listen af gættede bogstaver
         String bogstavGæt = "";
         for (String s  : SingleTon.getGlInstance().getBrugteBogstaver()){

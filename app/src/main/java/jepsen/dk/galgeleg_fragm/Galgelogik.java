@@ -68,6 +68,10 @@ public class Galgelogik{
 
   public long getDelta() {return delta;}
 
+  public void setStatus(boolean status){ spilletErVundet = status;  }
+
+  public void setHighscore(long hs) {highscore=hs; }
+
 
   public Galgelogik() {
     muligeOrd.add("bil");
