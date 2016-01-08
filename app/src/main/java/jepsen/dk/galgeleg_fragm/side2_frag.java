@@ -63,8 +63,8 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
         }
 
         //test funktioner
-//        SingleTon.getGlInstance().setStatus(true);
-//        SingleTon.getGlInstance().setHighscore(100);
+        SingleTon.getGlInstance().setStatus(true);
+        SingleTon.getGlInstance().setHighscore(100);
 
         // Opdater listen af gættede bogstaver
         String bogstavGæt = "";
