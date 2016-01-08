@@ -69,6 +69,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
     @Override
     public void onClick(View v) {
         // handler.removeCallbacks(this);
+        handler.removeCallbacks(this);
         if (v==start){
             count = -1;
             getFragmentManager().beginTransaction()
@@ -133,4 +134,6 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
         else
             count--;
     }
+
+
 }
