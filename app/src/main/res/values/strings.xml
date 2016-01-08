@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">G21 - Galgeleg </string>
     <string name="action_settings">Settings</string>
+    <string name="pref_user_name">PREF_USER_NAME</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
