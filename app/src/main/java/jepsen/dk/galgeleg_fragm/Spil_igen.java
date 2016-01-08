@@ -33,6 +33,8 @@ public class Spil_igen extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==again){
+            SingleTon.getGlInstance().nulstil();
+            SingleTon.hentScore();
             getParentFragment().getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, new Velkomst_frag())
                     .addToBackStack(null)

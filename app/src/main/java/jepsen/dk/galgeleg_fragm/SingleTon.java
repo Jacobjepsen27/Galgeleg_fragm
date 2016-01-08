@@ -109,7 +109,7 @@ public class SingleTon extends Application{
         }.execute();
     }
 
-    public void hentScore(){
+    public static void hentScore(){
         Log.d("PARSE_START", "STARTER");
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("HiScore");
         Log.d("PARSE_STARTET", "STARTET");
