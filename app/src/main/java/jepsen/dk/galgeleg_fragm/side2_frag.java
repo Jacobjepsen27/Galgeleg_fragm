@@ -1,9 +1,7 @@
 package jepsen.dk.galgeleg_fragm;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +39,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, View.O
             editTxt.setOnKeyListener(this);
             txt = (TextView) rod.findViewById(R.id.ordTextView);
             txt.setText(SingleTon.getGlInstance().getSynligtOrd());
-            bogstaver = (TextView) rod.findViewById(R.id.tidligereGætTextView);
+            bogstaver = (TextView) rod.findViewById(R.id.tidligereGætTextView2);
             bString = bogstaver.getText().toString();
             gæt = (Button) rod.findViewById(R.id.gætButton);
             gæt.setOnClickListener(this);

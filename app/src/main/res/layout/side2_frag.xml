@@ -50,7 +50,7 @@
             android:layout_marginTop="10dp"
             android:text="Tidligere gæt: " />
 
-        <LinearLayout
+    <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -63,9 +63,20 @@
                 android:text="Gæt!"
                 android:id="@+id/gætButton"
                 android:layout_gravity="center_horizontal"
+                android:textSize="32dp"
                 />
         </LinearLayout>
 
-    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tidligereGætTextView2"
+        android:layout_below="@+id/bogstavEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="" />
+
+</RelativeLayout>
 
 
