@@ -25,7 +25,7 @@
             android:text="Galgeleg"
             android:id="@+id/galgeTextView"
             android:textSize="50dp"
-            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
@@ -42,30 +42,33 @@
 
         <Button
             android:layout_width="200dp"
-            android:layout_height="0px"
-            android:layout_weight="1"
+            android:background="@drawable/knap_blaa_bg"
+            android:layout_height="56dp"
             android:text="Start"
             android:id="@+id/startButton"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"/>
 
         <Button
             android:layout_width="200dp"
-            android:layout_height="0px"
-            android:layout_weight="1"
+            android:background="@drawable/knap_blaa_bg"
+            android:layout_height="56dp"
             android:text="Sværhedsgrad"
             android:id="@+id/difButton"
             android:layout_above="@+id/startButton"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"/>
 
         <Button
             android:layout_width="200dp"
-            android:layout_height="0px"
-            android:layout_weight="1"
+            android:background="@drawable/knap_blaa_bg"
+            android:layout_height="56dp"
             android:text="Se highscore"
             android:id="@+id/HSbutton"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="16dp"/>
 
 
     </LinearLayout>
