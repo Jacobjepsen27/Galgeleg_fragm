@@ -1,6 +1,9 @@
 package jepsen.dk.galgeleg_fragm;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -57,23 +60,34 @@ public class name_frag extends Fragment implements View.OnClickListener{
         if(v==gem){
 
             navn = name.getText().toString();
-            score = SingleTon.getGlInstance().getScore();
+            if(navn.isEmpty()){
+                AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(getActivity());
+                dlgAlert.setMessage("Indtast brugernavn!");
+                dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dismiss the dialog
+                    }
+                });
+                dlgAlert.setCancelable(true);
+                dlgAlert.create().show();
+            } else {
+                score = SingleTon.getGlInstance().getScore();
+                sp.edit().putString("minNøgle", navn).commit();
 
-            sp.edit().putString("minNøgle", navn).commit();
+                ParseObject gameScore = new ParseObject("HiScore");
+                gameScore.put("navn", navn);
+                gameScore.saveInBackground();
+                gameScore.put("score", score);
+                gameScore.saveInBackground();
+                Log.d("Data", "DATA BURDE VÆRE GEMT");
 
-            ParseObject gameScore = new ParseObject("HiScore");
-            gameScore.put("navn", navn);
-            gameScore.saveInBackground();
-            gameScore.put("score", score);
-            gameScore.saveInBackground();
-            Log.d("Data", "DATA BURDE VÆRE GEMT");
+                SingleTon.tempHighscore(navn);
 
-            SingleTon.tempHighscore(navn);
-
-            getParentFragment().getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentindhold, new highscore_viewTemp())
-                    .addToBackStack(null)
-                    .commit();
+                getParentFragment().getFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentindhold, new highscore_viewTemp())
+                        .addToBackStack(null)
+                        .commit();
+            }
         }
     }
 }
