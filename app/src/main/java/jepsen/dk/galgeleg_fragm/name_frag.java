@@ -24,7 +24,7 @@ import java.util.prefs.Preferences;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class name_frag extends Fragment implements View.OnClickListener{
+public class name_frag extends Fragment implements View.OnClickListener {
 
     public ViewGroup rod;
     private Button gem;
@@ -57,12 +57,21 @@ public class name_frag extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        if(v==gem){
+        if (v == gem) {
 
+            AlertDialog.Builder dlgAlert = new AlertDialog.Builder(getActivity());
             navn = name.getText().toString();
-            if(navn.isEmpty()){
-                AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(getActivity());
-                dlgAlert.setMessage("Indtast brugernavn!");
+            if (navn.isEmpty()) {
+                dlgAlert.setMessage("Indtast initialer!");
+                dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //dismiss the dialog
+                    }
+                });
+                dlgAlert.setCancelable(true);
+                dlgAlert.create().show();
+            } else if (navn.length() > 6) {
+                dlgAlert.setMessage("Initialer må ikke være større end 6");
                 dlgAlert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         //dismiss the dialog
