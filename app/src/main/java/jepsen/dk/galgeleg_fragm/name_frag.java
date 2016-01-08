@@ -53,6 +53,8 @@ public class name_frag extends Fragment implements View.OnClickListener{
             gameScore.saveInBackground();
             Log.d("Data", "DATA BURDE VÆRE GEMT");
 
+            SingleTon.tempHighscore(navn);
+
             getParentFragment().getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, new highscore_viewTemp())
                     .addToBackStack(null)

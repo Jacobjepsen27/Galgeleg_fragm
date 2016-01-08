@@ -33,7 +33,10 @@ public class Spil_igen extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(v==again){
-
+            getParentFragment().getFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentindhold, new Velkomst_frag())
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 }

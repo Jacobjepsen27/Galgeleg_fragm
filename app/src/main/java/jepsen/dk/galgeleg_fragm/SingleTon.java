@@ -45,17 +45,20 @@ public class SingleTon extends Application{
 
     }
 
-    public void tempHighscore(String name){
-        tempScoreInt = new Integer[scoreInt.length];
-        tempScore = new String[score.length];
-        tempNavn = new String[navn.length];
+    public static void tempHighscore(String name){
+        //tempScoreInt = new Integer[scoreInt.length];
+        //tempScore = new String[score.length];
+        //tempNavn = new String[navn.length];
+        tempScoreInt = new Integer[scoreShow.length];
+        tempScore = new String[scoreShow.length];
+        tempNavn = new String[navnShow.length];
 
         for (int i = 0; navnShow.length > i; i++) {
             tempScoreInt[i] = Integer.parseInt(scoreShow[i]);
             tempNavn[i] = navnShow[i];
         }
         tempNavn[7]=name;
-        tempScoreInt[7]=Integer.valueOf(Long.toString(this.getGlInstance().highscore));
+        tempScoreInt[7]=Integer.valueOf(Long.toString(getGlInstance().highscore));
 
         boolean swapped = true;
         int j = 0;
@@ -64,7 +67,7 @@ public class SingleTon extends Application{
         while (swapped) {
             swapped = false;
             j++;
-            for (int i = 0; i < tempScore.length - j; i++) {
+            for (int i = 0; i < tempScoreInt.length - j; i++) {
                 if (tempScoreInt[i] < tempScoreInt[i + 1]) {
                     tmpI = tempScoreInt[i + 1];
                     tmpS = tempNavn[i + 1];
@@ -77,7 +80,7 @@ public class SingleTon extends Application{
             }
         }
 
-        for (int i = 0; scoreInt.length > i; i++) {
+        for (int i = 0; tempScoreInt.length > i; i++) {
             tempScore[i] = tempScoreInt[i].toString();
         }
 
