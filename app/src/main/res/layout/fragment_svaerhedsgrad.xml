@@ -35,6 +35,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:elevation="2dp"
                 android:layout_marginBottom="16dp"
+                android:background="@color/accent_color"
                 />
 
             <Button
@@ -46,6 +47,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:elevation="2dp"
                 android:layout_marginBottom="16dp"
+                android:background="@color/accent_color"
                 />
 
             <Button
@@ -56,6 +58,7 @@
                 android:textSize="32dp"
                 android:fontFamily="sans-serif-medium"
                 android:elevation="2dp"
+                android:background="@color/accent_color"
                 />
         </LinearLayout>
 
