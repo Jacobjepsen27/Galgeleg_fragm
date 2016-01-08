@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="jepsen.dk.galgeleg_fragm.Spil_igen">
+    tools:context="jepsen.dk.galgeleg_fragm.Spil_igen"
+    android:background="@color/primary_color">
 
 
     <Button
