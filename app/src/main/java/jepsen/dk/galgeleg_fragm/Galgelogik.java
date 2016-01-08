@@ -229,7 +229,11 @@ public class Galgelogik{
 
     private long highscore(){
 //      highscore = (((svaerhedsgrad)*1000000)/((antalForkerteBogstaver+1)*delta));
-        highscore = (8-antalForkerteBogstaver)*(beregnOrd(getOrdet()))*(delta*-3);
+        highscore = (4-(getAntalForkerteBogstaver()/2))*(beregnOrd(getOrdet()))-(((getDelta()/1000)*3));
+      System.out.println(highscore);
+      if (highscore < 0) {
+        highscore = 0;
+      }
       return highscore;
     }
 
