@@ -51,17 +51,8 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
             count = -1;
             countMode = true;
 
-            animation = new AnimationSet(false);
-            fadeOut = new AlphaAnimation(1, 0);
-            fadeOut.setInterpolator(new AccelerateInterpolator());
-            fadeOut.setDuration(500);
-            animation.addAnimation(fadeOut);
-            fadeIn = new AlphaAnimation(0, 1);
-            fadeIn.setInterpolator(new AccelerateInterpolator());
-            fadeIn.setDuration(500);
-            animation.addAnimation(fadeIn);
 
-            start.setAnimation(animation);
+
             start.setOnClickListener(this);
         }
         startRunning(500);
