@@ -1,6 +1,5 @@
 package jepsen.dk.galgeleg_fragm;
 
-import android.os.Handler;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -11,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Galgelogik{
   private ArrayList<String> muligeOrd = new ArrayList<String>();
@@ -231,7 +228,8 @@ public class Galgelogik{
 
 
     private long highscore(){
-      highscore = (((svaerhedsgrad)*1000000)/((antalForkerteBogstaver+1)*delta));
+//      highscore = (((svaerhedsgrad)*1000000)/((antalForkerteBogstaver+1)*delta));
+        highscore = (8-antalForkerteBogstaver)*(beregnOrd(getOrdet()))*(delta*-3);
       return highscore;
     }
 
