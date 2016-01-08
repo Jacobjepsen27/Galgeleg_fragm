@@ -21,7 +21,7 @@ import com.parse.ParseObject;
  */
 public class Velkomst_frag extends Fragment implements View.OnClickListener, Runnable {
 
-    private Button start, difficult;
+    private Button start, difficult, seHS;
     private ImageView galgeImg;
     private Handler handler = new Handler();
     private int count;
@@ -41,6 +41,9 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
         if(savedInstanceState == null) {
             difficult = (Button) rod.findViewById(R.id.difButton);
             difficult.setOnClickListener(this);
+
+            seHS = (Button) rod.findViewById(R.id.HSbutton);
+            seHS.setOnClickListener(this);
 
             start = (Button) rod.findViewById(R.id.startButton);
             galgeImg = (ImageView) rod.findViewById(R.id.galgeImageView);
@@ -84,8 +87,16 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
                     .replace(R.id.fragmentindhold, new Svaerhedsgrad())
                     .addToBackStack(null)
                     .commit();
-        }
+        } else if(v==seHS){
+        getFragmentManager().beginTransaction()
+                .replace(R.id.fragmentindhold, new highscore_frag())
+                .addToBackStack(null)
+                .commit();
+
     }
+
+    }
+
 
     @Override
     public void run() {
