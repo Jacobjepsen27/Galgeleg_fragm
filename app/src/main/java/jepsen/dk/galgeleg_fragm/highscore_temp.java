@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 /**
@@ -17,24 +18,25 @@ public class highscore_temp extends Fragment {
 
     private ViewGroup rod;
 
-    private ListView left, right;
-
-    ArrayAdapter<String> adapter1, adapter2;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rod = (ViewGroup) inflater.inflate(R.layout.fragment_highscore_temp, container, false);
 
-        left = (ListView) rod.findViewById(R.id.tempHighViewLeft);
-        right = (ListView) rod.findViewById(R.id.tempHighViewRight);
+        ArrayAdapter adapter = new ArrayAdapter(this.getContext(), R.layout.listview_egetlayout, R.id.listeelem_navn, SingleTon.tempNavnShow) {
+            public View getView(int position, View cachedView, ViewGroup parent){
+                View view = super.getView(position, cachedView, parent);
 
-        adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, SingleTon.tempNavnShow);
-        left.setAdapter(adapter1);
+                TextView score = (TextView) view.findViewById(R.id.listeelem_score);
+                score.setText(SingleTon.tempScoreShow[position]);
 
-        adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, SingleTon.tempScoreShow);
-        right.setAdapter(adapter2);
+                return view;
+            }
+        };
+
+        ListView listView = (ListView) rod.findViewById(R.id.highViewLeft);
+        listView.setAdapter(adapter);
 
         return rod;
     }
