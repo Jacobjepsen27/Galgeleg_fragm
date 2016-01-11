@@ -76,7 +76,9 @@ public class side2_frag extends Fragment implements View.OnClickListener{
         if(v instanceof Button){
             Log.d("KKKK", "LOL");
            bogstav = ((Button) v).getText().toString().toLowerCase();
-        }
+            v.setSelected(true);
+
+    }
 
         //String bogstav = editTxt.getText().toString().toLowerCase();
                 //editTxt.setText(""); // Nulstiller indtastningsfeltet (fjerner bogstav)
@@ -90,8 +92,8 @@ public class side2_frag extends Fragment implements View.OnClickListener{
                 }
 
                 //test funktioner
-                SingleTon.getGlInstance().setStatus(true);
-                SingleTon.getGlInstance().setHighscore(100);
+                //SingleTon.getGlInstance().setStatus(true);
+                //SingleTon.getGlInstance().setHighscore(100);
 
                 // Opdater listen af gættede bogstaver
                 String bogstavGæt = "";
