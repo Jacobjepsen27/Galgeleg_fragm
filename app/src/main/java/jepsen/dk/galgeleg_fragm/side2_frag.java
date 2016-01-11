@@ -111,6 +111,7 @@ public class side2_frag extends Fragment implements View.OnClickListener{
                 // Tjek om spillet er slut
                 if (SingleTon.getGlInstance().erSpilletSlut()){
                     //Log.d("SCOREN i int", Integer.toString((int) Math.round(SingleTon.getGlInstance().getScore())));
+                    getFragmentManager().popBackStack();
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragmentindhold, new AfsluttetSpil_frag())
                             .addToBackStack(null)

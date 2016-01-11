@@ -63,10 +63,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
         if (v==again){
             //Velkomst_frag.gl.saetsvaerhedsgrad(0);
             SingleTon.getGlInstance().nulstil();
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentindhold, new Velkomst_frag())
-                    .addToBackStack(null)
-                    .commit();
+            getFragmentManager().popBackStack();
 
     } else if (v==highscore){
             if(SingleTon.getGlInstance().erSpilletVundet() && Galgelogik.inHighscore()) {
