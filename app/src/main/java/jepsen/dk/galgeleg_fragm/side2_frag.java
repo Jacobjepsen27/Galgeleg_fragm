@@ -27,10 +27,13 @@ public class side2_frag extends Fragment implements View.OnClickListener{
     private TextView txt;
     private TextView bogstaver;
     private String bString;
-    private Button bogstav;
+    private String bogstav;
+    // private Button bogstav;
     private ViewGroup rod;
     private int[] knap = {R.id.A, R.id.B, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L,
             R.id.M, R.id.N, R.id.O, R.id.P, R.id.Q, R.id.R, R.id.S, R.id.T, R.id.U, R.id.V, R.id.W, R.id.X, R.id.Y, R.id.Z, R.id.Æ, R.id.Ø, R.id.Å};
+    private ArrayList <Button> knapper = new ArrayList<Button>();
+    Button btn;
 
 
 
@@ -44,15 +47,16 @@ public class side2_frag extends Fragment implements View.OnClickListener{
         if (savedInstanceState == null) {
             Log.d("HALLOOOOOO", "printer - IKKE");
             img = (ImageView) rod.findViewById(R.id.mainImgImageView);
-            //editTxt = (EditText) rod.findViewById(R.id.bogstavEditText);
-            //editTxt.setOnKeyListener(this);
+           // editTxt = (EditText) rod.findViewById(R.id.bogstavEditText);
+           // editTxt.setOnKeyListener(this);
             txt = (TextView) rod.findViewById(R.id.ordTextView);
             txt.setText(SingleTon.getGlInstance().getSynligtOrd());
             //bogstaver = (TextView) rod.findViewById(R.id.tidligereGætTextView2);
             //bString = bogstaver.getText().toString();
             for (int j = 0; j < knap.length; j++) {
-                Button btn = (Button) rod.findViewById(knap[j]);
+                btn = (Button) rod.findViewById(knap[j]);
                 btn.setOnClickListener(this);
+                knapper.add(btn);
             }
 
             Log.d("FØRBOGSTAVER", "printer - IKKE");
@@ -63,49 +67,57 @@ public class side2_frag extends Fragment implements View.OnClickListener{
 
 
 
-
-
     @Override
     public void onClick(View v) {
-        String bogstav = editTxt.getText().toString().toLowerCase();
-        editTxt.setText(""); // Nulstiller indtastningsfeltet (fjerner bogstav)
+        int id = v.getId();
+        //bogstav = Integer.toString(letter);
+        Log.d("JJJJ", "HEJ");
 
-        // Gæt på et bogstav og håndter fejlsituationer (ugyldige gæt)
-        try {
-            SingleTon.getGlInstance().gætBogstav(bogstav);
-        } catch (Exception e){
-            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show(); // Viser en lille popup med fejltekst fra Galgelogik
-            return;
+        if(v instanceof Button){
+            Log.d("KKKK", "LOL");
+           bogstav = ((Button) v).getText().toString().toLowerCase();
         }
 
-        //test funktioner
-        SingleTon.getGlInstance().setStatus(true);
-        SingleTon.getGlInstance().setHighscore(100);
+        //String bogstav = editTxt.getText().toString().toLowerCase();
+                //editTxt.setText(""); // Nulstiller indtastningsfeltet (fjerner bogstav)
 
-        // Opdater listen af gættede bogstaver
-        String bogstavGæt = "";
-        for (String s  : SingleTon.getGlInstance().getBrugteBogstaver()){
-            bogstavGæt += s + ", " ;
-        }
-        bogstaver.setText(bString + bogstavGæt);
+                // Gæt på et bogstav og håndter fejlsituationer (ugyldige gæt)
+                try {
+                    SingleTon.getGlInstance().gætBogstav(bogstav);
+                } catch (Exception e){
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show(); // Viser en lille popup med fejltekst fra Galgelogik
+                    return;
+                }
 
-        // Opdater det synlige ord
-        txt.setText(SingleTon.getGlInstance().getSynligtOrd());
+                //test funktioner
+                SingleTon.getGlInstance().setStatus(true);
+                SingleTon.getGlInstance().setHighscore(100);
 
-        // Opdater billede hvis sidste gæt er forkert
-        if (!SingleTon.getGlInstance().erSidsteBogstavKorrekt()){
-            updateImg();
-        }
+                // Opdater listen af gættede bogstaver
+                String bogstavGæt = "";
+                for (String s  : SingleTon.getGlInstance().getBrugteBogstaver()){
+                    bogstavGæt += s + ", " ;
+                }
+                //bogstaver.setText(bString + bogstavGæt);
 
-        // Tjek om spillet er slut
-        if (SingleTon.getGlInstance().erSpilletSlut()){
-            //Log.d("SCOREN i int", Integer.toString((int) Math.round(SingleTon.getGlInstance().getScore())));
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentindhold, new AfsluttetSpil_frag())
-                    .addToBackStack(null)
-                    .commit();
-        }
-    }
+                // Opdater det synlige ord
+                txt.setText(SingleTon.getGlInstance().getSynligtOrd());
+
+                // Opdater billede hvis sidste gæt er forkert
+                if (!SingleTon.getGlInstance().erSidsteBogstavKorrekt()){
+                    updateImg();
+                }
+
+                // Tjek om spillet er slut
+                if (SingleTon.getGlInstance().erSpilletSlut()){
+                    //Log.d("SCOREN i int", Integer.toString((int) Math.round(SingleTon.getGlInstance().getScore())));
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.fragmentindhold, new AfsluttetSpil_frag())
+                            .addToBackStack(null)
+                            .commit();
+                }
+            }
+
 
     // Opdaterer billedet mht. antal gæt der er brugt
     public void updateImg(){
