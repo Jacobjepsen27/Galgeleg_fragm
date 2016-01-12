@@ -27,27 +27,16 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:layout_below="@+id/mainImgImageView"
+            android:layout_marginBottom="30dp"
             android:layout_centerHorizontal="true" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/tidligereGætTextView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="" />
-
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginBottom="16dp"
         android:weightSum="5"
-
+        android:layout_below="@+id/ordTextView"
+        android:layout_marginBottom="10dp"
         >
 
         <LinearLayout
@@ -57,78 +46,48 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
-            android:padding="0dp"
+            android:padding="0px"
             >
 
 
         <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
-                android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:text="A"
-                android:id="@+id/A"
-                android:layout_marginRight="2dp"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
-                />
+            style="@style/bogstaver"
+            android:background="@drawable/knap_blaa_bg"
+            android:text="A"
+            android:id="@+id/A" />
+
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
                 android:text="B"
-                android:layout_marginRight="2dp"
                 android:id="@+id/B"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="C"
                 android:id="@+id/C"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="D"
                 android:id="@+id/D"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="E"
                 android:id="@+id/E"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="F"
                 android:id="@+id/F"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
         </LinearLayout>
@@ -143,72 +102,42 @@
                 android:padding="0dp">
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="G"
                 android:id="@+id/G"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="H"
                 android:id="@+id/H"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="I"
                 android:id="@+id/I"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="J"
                 android:id="@+id/J"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="K"
                 android:id="@+id/K"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="L"
                 android:id="@+id/L"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
             </LinearLayout>
@@ -223,71 +152,41 @@
             android:padding="0dp">
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="M"
                 android:id="@+id/M"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="N"
                 android:id="@+id/N"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="O"
                 android:id="@+id/O"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="P"
                 android:id="@+id/P"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="Q"
                 android:id="@+id/Q"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="R"
                 android:id="@+id/R"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
 
@@ -302,72 +201,42 @@
             android:layout_weight="1"
             android:padding="0dp">
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="S"
                 android:id="@+id/S"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="T"
                 android:id="@+id/T"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="U"
                 android:id="@+id/U"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="V"
                 android:id="@+id/V"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="W"
                 android:id="@+id/W"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="X"
                 android:id="@+id/X"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
         </LinearLayout>
@@ -385,59 +254,35 @@
             >
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="Y"
                 android:id="@+id/Y"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"></Button>
+             />
 
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="Z"
                 android:id="@+id/Z"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="Æ"
                 android:id="@+id/Æ"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="Ø"
                 android:id="@+id/Ø"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
             <Button
-                android:layout_width="0px"
-                android:layout_weight="1"
+                style="@style/bogstaver"
                 android:background="@drawable/knap_blaa_bg"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
                 android:text="Å"
                 android:id="@+id/Å"
-                android:layout_gravity="center_horizontal"
-                android:textSize="15dp"
                 />
 
             </LinearLayout>
