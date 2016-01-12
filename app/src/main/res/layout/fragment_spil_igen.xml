@@ -7,8 +7,9 @@
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="@drawable/knap_blaa_bg"
+        android:layout_width="200dp"
+        android:layout_height="56dp"
         android:text="Spil igen"
         android:id="@+id/playAgain"
         android:layout_alignParentTop="true"

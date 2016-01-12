@@ -42,12 +42,12 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
                 highscore.setText("Se highscore");
             } else if (SingleTon.getGlInstance().erSpilletVundet()) {
                 if(Galgelogik.inHighscore()==true) {
-                    tabt.setText("Du gættede:" +SingleTon.getGlInstance().getOrdet() );
+                    tabt.setText("Du gættede: " +SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
                     hs.setText("Score: " + Long.toString(SingleTon.getGlInstance().getScore()));
                     highscore.setText("Gem highscore");
                 }
-                else{ tabt.setText("Du gættede:" + SingleTon.getGlInstance().getOrdet() );
+                else{ tabt.setText("Du gættede: " + SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
                     hs.setText("Score: " + Long.toString(SingleTon.getGlInstance().getScore()));
                     highscore.setText("Se highscore");

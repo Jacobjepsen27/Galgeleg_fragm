@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
     tools:context="dk.jepsen.Galgeleh_frag.afsluttetspil">
 
     <LinearLayout
@@ -14,6 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="#81D4FA"
+            android:layout_marginBottom="15dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,18 +28,14 @@
         android:text="Du har vundet!"
         android:id="@+id/ord"
         android:textSize="45dp"
+        android:textStyle="bold"
         android:fontFamily="sans-serif-medium"
         android:layout_gravity="center_horizontal"
         android:textColor="#000000"
-        android:layout_marginBottom="50px"
+        android:layout_marginBottom="50dp"
         />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="#0288d1"
-        android:layout_marginBottom="80dp">
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,10 +66,9 @@
         android:elevation="14dp"
         android:id="@+id/againButton"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="16dp"
         />
-
-
 
     <Button
         android:layout_width="200dp"
@@ -77,7 +78,6 @@
         android:elevation="14dp"
         android:layout_above="@+id/againButton"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
         />
 
     </LinearLayout>
