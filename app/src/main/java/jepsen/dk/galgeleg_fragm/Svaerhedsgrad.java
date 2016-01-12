@@ -1,17 +1,19 @@
 package jepsen.dk.galgeleg_fragm;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 
-public class Svaerhedsgrad extends Fragment implements View.OnClickListener {
+public class Svaerhedsgrad extends Fragment implements View.OnClickListener, Runnable {
 
     private ViewGroup rod;
 
@@ -20,6 +22,10 @@ public class Svaerhedsgrad extends Fragment implements View.OnClickListener {
     Button button1, button2, button3;
     ArrayAdapter<String> adapter;
     String[] valg = {"Let", "Middel", "Svær"};
+    private ImageView galgeImg;
+    private Handler handler = new Handler();
+    private int count;
+    private boolean countMode;
 
 
     @Override
@@ -34,6 +40,13 @@ public class Svaerhedsgrad extends Fragment implements View.OnClickListener {
         button2.setOnClickListener(this);
         button3 = (Button) rod.findViewById(R.id.knapSvaer);
         button3.setOnClickListener(this);
+
+        galgeImg = (ImageView) rod.findViewById(R.id.galgeImageView);
+        galgeImg.setImageResource(R.drawable.forkert4);
+        count = -1;
+        countMode = true;
+        startRunning(500);
+
 
         //listView = getFragmentManager().findFragmentById(R.id.difView);
 //        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,valg);
@@ -76,5 +89,57 @@ public class Svaerhedsgrad extends Fragment implements View.OnClickListener {
         SingleTon.getGlInstance().nulstil();
         getFragmentManager().popBackStack();
     }
+
+    @Override
+    public void run() {
+        switch (count){
+            case -1:
+
+                galgeImg.setImageResource(R.drawable.galge);
+                break;
+            case 0:
+                galgeImg.setImageResource(R.drawable.forkert1);
+                break;
+            case 1:
+                galgeImg.setImageResource(R.drawable.forkert2);
+                break;
+            case 2:
+                galgeImg.setImageResource(R.drawable.forkert3);
+                break;
+            case 3:
+                galgeImg.setImageResource(R.drawable.forkert4);
+                break;
+            case 4:
+                galgeImg.setImageResource(R.drawable.forkert5);
+                break;
+            case 5:
+                galgeImg.setImageResource(R.drawable.forkert6);
+                break;
+        }
+        count();
+        startRunning(500);
+    }
+
+
+    // Kører run efter "ms" milisekunder
+    public void startRunning(int ms) {
+        handler.postDelayed(this, ms);
+    }
+
+    public void count(){
+        if (count<=-1){
+            countMode = true;
+        } else if (count>=5){
+            countMode = false;
+        }
+
+        if (countMode)
+            count++;
+        else
+            count--;
+    }
+
+
+
 
 }

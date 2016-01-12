@@ -4,13 +4,22 @@
     android:layout_height="match_parent"
     tools:context="jepsen.dk.galgeleg_fragm.highscore_frag">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="#81D4FA"
+        android:layout_marginBottom="16dp"
+        android:layout_centerHorizontal="true">
+
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:text="Highscore"
         android:id="@+id/highscortTitel"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:textSize="40dp"
         android:fontFamily="sans-serif-medium"
         android:padding="16dp"/>
@@ -20,11 +29,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp">
+
+
 
         <ListView
             android:layout_width="0px"
             android:layout_weight="1"
+            android:layout_marginLeft="16dp"
             android:layout_height="wrap_content"
             android:id="@+id/highViewLeft"
             android:layout_alignParentTop="true"
@@ -32,6 +45,6 @@
             android:choiceMode="singleChoice" />
 
     </LinearLayout>
-
+    </LinearLayout>
 
 </TableLayout>

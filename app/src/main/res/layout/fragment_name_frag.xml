@@ -20,6 +20,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/knap_blaa_bg"
         android:text="Gem"
         android:id="@+id/saveButton"
         android:layout_below="@+id/highscoreName"

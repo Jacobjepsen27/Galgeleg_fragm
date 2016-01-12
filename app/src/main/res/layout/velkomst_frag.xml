@@ -27,7 +27,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Galgeleg"
             android:id="@+id/galgeTextView"
-            android:textSize="50dp"
+            android:textSize="45dp"
             android:fontFamily="sans-serif-medium"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
