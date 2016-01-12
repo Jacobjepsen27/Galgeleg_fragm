@@ -36,20 +36,20 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
 
         Log.d("HIGHSCORE", Long.toString(SingleTon.getGlInstance().getScore()));
             if (SingleTon.getGlInstance().erSpilletTabt()) {
-                tabt.setText("Ordet var: " + "\n" + SingleTon.getGlInstance().getOrdet() );
+                tabt.setText("Ordet var: " + SingleTon.getGlInstance().getOrdet() );
                 status.setText("Du har tabt!");
-                hs.setText("Du fik " + Long.toString(SingleTon.getGlInstance().getScore()) + " point");
+                hs.setText("Score: " + Long.toString(SingleTon.getGlInstance().getScore()));
                 highscore.setText("Se highscore");
             } else if (SingleTon.getGlInstance().erSpilletVundet()) {
                 if(Galgelogik.inHighscore()==true) {
-                    tabt.setText("Du gættede:" + "\n" + SingleTon.getGlInstance().getOrdet() );
+                    tabt.setText("Du gættede:" +SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
-                    hs.setText("Du fik " + Long.toString(SingleTon.getGlInstance().getScore()) + " point");
+                    hs.setText("Score: " + Long.toString(SingleTon.getGlInstance().getScore()));
                     highscore.setText("Gem highscore");
                 }
-                else{ tabt.setText("Du gættede:" + "\n" + SingleTon.getGlInstance().getOrdet() );
+                else{ tabt.setText("Du gættede:" + SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
-                    hs.setText("Du fik " + Long.toString(SingleTon.getGlInstance().getScore()) + " point");
+                    hs.setText("Score: " + Long.toString(SingleTon.getGlInstance().getScore()));
                     highscore.setText("Se highscore");
                 }
             }
