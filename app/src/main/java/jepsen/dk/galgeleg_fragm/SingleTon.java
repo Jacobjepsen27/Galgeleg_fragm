@@ -1,7 +1,9 @@
 package jepsen.dk.galgeleg_fragm;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.parse.FindCallback;
@@ -34,10 +36,12 @@ public class SingleTon extends Application{
     public static String [] tempScore;
     public static String [] tempNavnShow = new String[8];
     public static String [] tempScoreShow = new String[8];
-
+    private boolean firstStartUp;
+    SharedPreferences sp;
 
     public void onCreate(){
         super.onCreate();
+        //startUp();
         hentOrd();
         Parse.initialize(this);
         hentScore();
@@ -46,9 +50,6 @@ public class SingleTon extends Application{
     }
 
     public static void tempHighscore(String name){
-        //tempScoreInt = new Integer[scoreInt.length];
-        //tempScore = new String[score.length];
-        //tempNavn = new String[navn.length];
         tempScoreInt = new Integer[scoreShow.length];
         tempScore = new String[scoreShow.length];
         tempNavn = new String[navnShow.length];
@@ -168,5 +169,17 @@ public class SingleTon extends Application{
         });
     }
 
+    public void startUp(){
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
+        firstStartUp = sp.getBoolean("startUp",true);
+        if(firstStartUp){
+            hentOrd();
+
+
+            sp.edit().putBoolean("startUp",false);
+        } else{
+
+        }
+    }
 
 }

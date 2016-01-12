@@ -78,5 +78,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
                         .commit();
             }
         }
-}
+    }
+
+
 }
