@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class Galgelogik{
   public ArrayList<String> gemOrd = new ArrayList<>();
-  private ArrayList<String> muligeOrd = new ArrayList<String>();
+  public ArrayList<String> muligeOrd = new ArrayList<String>();
   private ArrayList<String> nemmeOrd = new ArrayList<String>();
   private ArrayList<String> middelOrd = new ArrayList<String>();
   private ArrayList<String> svaereOrd = new ArrayList<String>();
@@ -184,6 +184,25 @@ public class Galgelogik{
     muligeOrd.clear();
     muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
+//    for(String ord : muligeOrd){
+//      int lix = beregnOrd(ord);
+//      if(lix > 0 && lix < 200){
+//        nemmeOrd.add(ord);
+//      } else if (lix >= 200 && lix <450){
+//        middelOrd.add(ord);
+//      } else {
+//        svaereOrd.add(ord);
+//      }
+//    }
+//    Log.i("Log", "Antal nemme ord: " + nemmeOrd.size());
+//    Log.i("Log", "Antal middel ord: " + middelOrd.size());
+//    Log.i("Log", "Antal svære ord: " + svaereOrd.size());
+
+    System.out.println("muligeOrd = " + muligeOrd);
+    //nulstil(); //ligegyldig
+  }
+
+  public void inddelSvaerhedsgrad(){
     for(String ord : muligeOrd){
       int lix = beregnOrd(ord);
       if(lix > 0 && lix < 200){
@@ -197,8 +216,6 @@ public class Galgelogik{
     Log.i("Log", "Antal nemme ord: " + nemmeOrd.size());
     Log.i("Log", "Antal middel ord: " + middelOrd.size());
     Log.i("Log", "Antal svære ord: " + svaereOrd.size());
-
-    System.out.println("muligeOrd = " + muligeOrd);
     nulstil();
   }
 

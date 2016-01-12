@@ -12,9 +12,12 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -37,22 +40,50 @@ public class SingleTon extends Application{
     public static String [] tempScore;
     public static String [] tempNavnShow = new String[8];
     public static String [] tempScoreShow = new String[8];
+    private ArrayList obj;
+    private ArrayList<String> placeHolder = new ArrayList<>();
     private boolean firstStartUp;
-    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+    private File fil;
+    String filPlads = "ord";
+    SharedPreferences sp;
 
     public void onCreate(){
         super.onCreate();
         Parse.initialize(this);
         hentScore();
-        hentOrd();
-//        firstStartUp = sp.getBoolean("startUp",true);
-//        if(firstStartUp){
-//            hentOrd();
-//        } else{
-//
-//        }
+        //hentOrd();
+        sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
+        firstStartUp = sp.getBoolean("startUp",true);
+        if(firstStartUp){
+            Log.d("FIRSTTIME", "DEN STARTEDE FOR FØRSTE GANGE");
+            hentOrd(sp);
+        } else{
+            Log.d("NOTFIRSTTIME", "DEN STARTEDE IKKE FOR FØRSTE GANGE");
+            notFirstStartUp();
+        }
+    }
 
+    public void notFirstStartUp(){
+        try {
+            placeHolder = Serialisering.hent(filPlads);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        for (int i=0; i<placeHolder.size();i++){
+            gl.muligeOrd.add(placeHolder.get(i));
+        }
+        gl.inddelSvaerhedsgrad();
+    }
 
+    public void startUpFirstTime(){
+
+        fil = new File(getFilesDir(),filPlads);
+        try {
+            Serialisering.gem(gl.muligeOrd, filPlads);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        gl.inddelSvaerhedsgrad();
     }
 
     public static void tempHighscore(String name){
@@ -101,7 +132,7 @@ public class SingleTon extends Application{
 
     }
 
-    public void hentOrd(){
+    public void hentOrd(final SharedPreferences sp){
         new AsyncTask<String,Void, String>(){
 
             @Override
@@ -117,8 +148,8 @@ public class SingleTon extends Application{
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
-                //sp.edit().putBoolean("startUp", false);
-                //startUp();
+                sp.edit().putBoolean("startUp", false).commit();
+                startUpFirstTime();
             }
         }.execute();
     }
@@ -180,10 +211,6 @@ public class SingleTon extends Application{
                 }
             }
         });
-    }
-
-    public void startUp(){
-
     }
 
 }
