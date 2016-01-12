@@ -46,7 +46,6 @@ public class SingleTon extends Application{
         Parse.initialize(this);
         hentScore();
 
-
     }
 
     public static void tempHighscore(String name){
