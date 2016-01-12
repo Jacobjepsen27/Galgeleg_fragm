@@ -12,6 +12,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,14 +38,20 @@ public class SingleTon extends Application{
     public static String [] tempNavnShow = new String[8];
     public static String [] tempScoreShow = new String[8];
     private boolean firstStartUp;
-    SharedPreferences sp;
+    SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 
     public void onCreate(){
         super.onCreate();
-        //startUp();
-        hentOrd();
         Parse.initialize(this);
         hentScore();
+        hentOrd();
+//        firstStartUp = sp.getBoolean("startUp",true);
+//        if(firstStartUp){
+//            hentOrd();
+//        } else{
+//
+//        }
+
 
     }
 
@@ -95,16 +102,23 @@ public class SingleTon extends Application{
     }
 
     public void hentOrd(){
-        new AsyncTask(){
+        new AsyncTask<String,Void, String>(){
 
             @Override
-            protected Object doInBackground(Object[] params) {
+            protected String doInBackground(String... params) {
                 try {
                     gl.hentOrdFraDr();
                     return "Ordene blev hentet!";
                 } catch (Exception e){
                     return "Der skete en fejl!";
                 }
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+                //sp.edit().putBoolean("startUp", false);
+                //startUp();
             }
         }.execute();
     }
@@ -169,16 +183,7 @@ public class SingleTon extends Application{
     }
 
     public void startUp(){
-        sp = PreferenceManager.getDefaultSharedPreferences(this);
-        firstStartUp = sp.getBoolean("startUp",true);
-        if(firstStartUp){
-            hentOrd();
 
-
-            sp.edit().putBoolean("startUp",false);
-        } else{
-
-        }
     }
 
 }

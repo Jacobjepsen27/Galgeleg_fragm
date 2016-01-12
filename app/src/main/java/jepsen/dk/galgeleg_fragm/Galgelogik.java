@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Random;
 
 public class Galgelogik{
+  public ArrayList<String> gemOrd = new ArrayList<>();
   private ArrayList<String> muligeOrd = new ArrayList<String>();
   private ArrayList<String> nemmeOrd = new ArrayList<String>();
   private ArrayList<String> middelOrd = new ArrayList<String>();
