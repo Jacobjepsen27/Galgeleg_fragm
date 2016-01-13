@@ -79,8 +79,9 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
                     .addToBackStack(null)
                     .commit();
         } else if(v==seHS){
+            SingleTon.getGlInstance().setHScontext(true);
         getFragmentManager().beginTransaction()
-                .replace(R.id.fragmentindhold, new forsideHS_frag())
+                .replace(R.id.fragmentindhold, new highscore_view())
                 .addToBackStack(null)
                 .commit();
 

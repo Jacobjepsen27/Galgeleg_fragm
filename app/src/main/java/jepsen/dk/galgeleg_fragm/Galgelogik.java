@@ -28,6 +28,7 @@ public class Galgelogik implements Serializable{
   static long highscore;
   private long start, slut, delta;
 
+
   public static int svaerhedsgrad = 0;
 
   public ArrayList<String> getBrugteBogstaver() {
@@ -69,6 +70,14 @@ public class Galgelogik implements Serializable{
   public void setStatus(boolean status){ spilletErVundet = status;  }
 
   public void setHighscore(long hs) {highscore=hs; }
+
+  public boolean hsContext = false;
+
+  public boolean getHscontext(){return hsContext;}
+
+  public void setHScontext(boolean forside){
+    hsContext = forside;
+  }
 
 
   public Galgelogik() {
@@ -144,6 +153,7 @@ public class Galgelogik implements Serializable{
     }
     opdaterSynligtOrd();
     if(erSpilletSlut()){
+      setHScontext(false);
       slut = System.currentTimeMillis();
       delta = slut - start;
       Log.d("HIGHSCORE", Double.toString(highscore()));
