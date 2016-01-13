@@ -17,7 +17,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="280dp"
             android:background="#81D4FA"
             android:layout_marginBottom="15dp">
 
@@ -27,7 +27,7 @@
         android:layout_marginTop="20dp"
         android:text="Du har vundet!"
         android:id="@+id/ord"
-        android:textSize="45dp"
+        android:textSize="40dp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-medium"
         android:layout_gravity="center_horizontal"
@@ -63,10 +63,10 @@
         android:layout_height="56dp"
         android:background="@drawable/knap_blaa_bg"
         android:text="Prøv igen!"
-        android:elevation="14dp"
+        android:elevation="2dp"
         android:id="@+id/againButton"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="16dp"
         />
 
@@ -75,7 +75,7 @@
         android:layout_height="56dp"
         android:background="@drawable/knap_blaa_bg"
         android:id="@+id/highscoreButton"
-        android:elevation="14dp"
+        android:elevation="2dp"
         android:layout_above="@+id/againButton"
         android:layout_gravity="center_horizontal"
         />
