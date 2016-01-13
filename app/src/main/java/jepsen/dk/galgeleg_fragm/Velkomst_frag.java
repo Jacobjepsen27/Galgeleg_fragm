@@ -80,7 +80,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
                     .commit();
         } else if(v==seHS){
         getFragmentManager().beginTransaction()
-                .replace(R.id.fragmentindhold, new highscore_frag())
+                .replace(R.id.fragmentindhold, new forsideHS_frag())
                 .addToBackStack(null)
                 .commit();
 
