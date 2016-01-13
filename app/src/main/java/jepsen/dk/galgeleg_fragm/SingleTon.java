@@ -50,10 +50,10 @@ public class SingleTon extends Application{
         sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
         firstStartUp = sp.getBoolean("startUp",true);
         if(firstStartUp){
-            Log.d("FIRSTTIME", "DEN STARTEDE FOR FØRSTE GANGE");
+            System.out.println("DEN STARTEDE FOR FØRSTE GANGE");
             hentOrd(sp);
         } else{
-            Log.d("NOTFIRSTTIME", "DEN STARTEDE IKKE FOR FØRSTE GANGE");
+            System.out.println("DEN STARTEDE IKKE FOR FØRSTE GANGE");
             notFirstStartUp();
         }
     }
