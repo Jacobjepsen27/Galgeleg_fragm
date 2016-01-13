@@ -11,9 +11,6 @@ import java.util.ArrayList;
 
 public class Serialisering {
 
-  public static ArrayList map;
-  public static ArrayList retur;
-
   public static void gem(Object obj, String filnavn) throws IOException {
     FileOutputStream datastrøm = new FileOutputStream(filnavn);
     ObjectOutputStream objektstrøm = new ObjectOutputStream(datastrøm);
@@ -21,16 +18,11 @@ public class Serialisering {
     objektstrøm.close();
   }
 
-  public static ArrayList hent(String filnavn) throws Exception {
-    map = new ArrayList();
+  public static Object hent(String filnavn) throws Exception {
     FileInputStream datastrøm = new FileInputStream(filnavn);
     ObjectInputStream objektstrøm = new ObjectInputStream(datastrøm);
-//    Object obj = objektstrøm.readObject();
-    map = (ArrayList) objektstrøm.readObject();
+    Object obj = objektstrøm.readObject();
     objektstrøm.close();
-    for (Object s: map){
-      retur.add(s);
-    }
-    return retur;
+    return obj;
   }
 }

@@ -5,15 +5,16 @@ import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
 
-public class Galgelogik{
+public class Galgelogik implements Serializable{
   public ArrayList<String> gemOrd = new ArrayList<>();
-  public ArrayList<String> muligeOrd = new ArrayList<String>();
+  public static ArrayList<String> muligeOrd = new ArrayList<String>();
   private ArrayList<String> nemmeOrd = new ArrayList<String>();
   private ArrayList<String> middelOrd = new ArrayList<String>();
   private ArrayList<String> svaereOrd = new ArrayList<String>();
@@ -28,7 +29,6 @@ public class Galgelogik{
   private long start, slut, delta;
 
   public static int svaerhedsgrad = 0;
-
 
   public ArrayList<String> getBrugteBogstaver() {
     return brugteBogstaver;
@@ -199,7 +199,7 @@ public class Galgelogik{
 //    Log.i("Log", "Antal svære ord: " + svaereOrd.size());
 
     System.out.println("muligeOrd = " + muligeOrd);
-    //nulstil(); //ligegyldig
+    nulstil(); //ligegyldig
   }
 
   public void inddelSvaerhedsgrad(){

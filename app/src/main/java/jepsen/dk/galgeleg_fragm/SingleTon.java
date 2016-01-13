@@ -12,12 +12,9 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -28,7 +25,7 @@ public class SingleTon extends Application{
     public static SingleTon getInstance() {
         return ourInstance;
     }
-    public static Galgelogik gl = new Galgelogik();
+    public static Galgelogik gl;
     public static Galgelogik getGlInstance() { return gl; };
     public static String[] navn;
     public static String[] score;
@@ -40,15 +37,13 @@ public class SingleTon extends Application{
     public static String [] tempScore;
     public static String [] tempNavnShow = new String[8];
     public static String [] tempScoreShow = new String[8];
-    private ArrayList obj;
-    private ArrayList<String> placeHolder = new ArrayList<>();
+    private ArrayList<String> placeHolder;
     private boolean firstStartUp;
-    private File fil;
-    String filPlads = "ord";
     SharedPreferences sp;
 
     public void onCreate(){
         super.onCreate();
+        gl = new Galgelogik();
         Parse.initialize(this);
         hentScore();
         //hentOrd();
@@ -65,25 +60,26 @@ public class SingleTon extends Application{
 
     public void notFirstStartUp(){
         try {
-            placeHolder = Serialisering.hent(filPlads);
+            placeHolder = (ArrayList) Serialisering.hent(this.getFilesDir() + "/ord.ser");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for (int i=0; i<placeHolder.size();i++){
-            gl.muligeOrd.add(placeHolder.get(i));
+        for (String i : placeHolder){
+            System.out.println(i);
+            gl.muligeOrd.add(i);
         }
         gl.inddelSvaerhedsgrad();
+        gl.saetsvaerhedsgrad(2);
     }
 
     public void startUpFirstTime(){
-
-        fil = new File(getFilesDir(),filPlads);
         try {
-            Serialisering.gem(gl.muligeOrd, filPlads);
+            Serialisering.gem(Galgelogik.muligeOrd, this.getFilesDir() + "/ord.ser");
         } catch (IOException e) {
             e.printStackTrace();
         }
         gl.inddelSvaerhedsgrad();
+        gl.saetsvaerhedsgrad(2);
     }
 
     public static void tempHighscore(String name){
@@ -96,7 +92,7 @@ public class SingleTon extends Application{
             tempNavn[i] = navnShow[i];
         }
         tempNavn[7]=name;
-        tempScoreInt[7]=Integer.valueOf(Long.toString(getGlInstance().highscore));
+        tempScoreInt[7]=Integer.valueOf(Long.toString(gl.highscore));
 
         boolean swapped = true;
         int j = 0;
@@ -201,10 +197,6 @@ public class SingleTon extends Application{
                         scoreShow[i] = score[i];
                     }
 
-                    //Original array-initialisering
-                    //String [] navnShow = {navn[0],navn[1],navn[2],navn[3],navn[4],navn[5],navn[6],navn[7]};
-                    //String [] scoreShow = {score[0],score[1],score[2],score[3],score[4],score[5],score[6],score[7]};
-
                 } else {
                     Log.d("PARSE_EXCEPTION", "DER ER SKET EN FEJL");
                     Log.d("score", "Error: " + e.getMessage());
@@ -212,5 +204,4 @@ public class SingleTon extends Application{
             }
         });
     }
-
 }
