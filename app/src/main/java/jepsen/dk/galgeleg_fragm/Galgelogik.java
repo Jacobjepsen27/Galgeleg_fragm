@@ -90,7 +90,6 @@ public class Galgelogik implements Serializable{
     muligeOrd.add("skovsnegl");
     muligeOrd.add("solsort");
     saetsvaerhedsgrad(2);
-    //nulstil();
   }
 
   public void nulstil() {
@@ -256,7 +255,6 @@ public class Galgelogik implements Serializable{
 
 
     private long highscore(){
-//      highscore = (((svaerhedsgrad)*1000000)/((antalForkerteBogstaver+1)*delta));
         highscore = (8-(getAntalForkerteBogstaver()))*(beregnOrd(getOrdet()))-(((getDelta()/1000)*3));
       System.out.println(highscore);
       if (highscore < 0) {

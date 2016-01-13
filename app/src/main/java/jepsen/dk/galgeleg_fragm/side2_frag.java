@@ -115,17 +115,4 @@ public class side2_frag extends Fragment implements View.OnClickListener{
                 break;
         }
     }
-
-    // Klikker på "Gæt"-knappen når der trykkes på "Enter"-knappen på tastaturet
-
-
-
-
-
-
-
-
-
-
-
 }

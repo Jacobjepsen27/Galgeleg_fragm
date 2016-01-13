@@ -70,9 +70,6 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
                     .replace(R.id.fragmentindhold, new side2_frag())
                     .addToBackStack(null)
                     .commit();
-            //Intent i = new Intent(this, side2_akt.class);
-            //startActivity(i);
-            //&overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         } else if (v==difficult){
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, new Svaerhedsgrad())
