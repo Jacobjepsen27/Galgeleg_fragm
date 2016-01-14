@@ -27,10 +27,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
     private int count;
     private boolean countMode;
     private Animation fadeIn, fadeOut;
-
     private ViewGroup rod;
-
-    //static Galgelogik gl;
     static AnimationSet animation;
 
     @Override
@@ -55,15 +52,11 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
 
             start.setOnClickListener(this);
         }
-        startRunning(500);
-
         return rod;
     }
 
     @Override
     public void onClick(View v) {
-        // handler.removeCallbacks(this);
-        handler.removeCallbacks(this);
         if (v==start){
             count = -1;
             getFragmentManager().beginTransaction()
@@ -133,6 +126,18 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
             count++;
         else
             count--;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        startRunning(500);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        handler.removeCallbacks(this);
     }
 
 

@@ -45,31 +45,6 @@ public class Svaerhedsgrad extends Fragment implements View.OnClickListener, Run
         galgeImg.setImageResource(R.drawable.forkert4);
         count = -1;
         countMode = true;
-        startRunning(500);
-
-
-        //listView = getFragmentManager().findFragmentById(R.id.difView);
-//        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1,valg);
-//        listView.setAdapter(adapter);
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                if (view == button1) {
-//                    Toast.makeText(getContext(), "Sværhedsgrad sat til let", Toast.LENGTH_SHORT).show();
-//
-//                } else if (view == button2) {
-//                    Toast.makeText(getContext(), "Sværhedsgrad sat til middel", Toast.LENGTH_SHORT).show();
-//
-//                } else if (view == button3) {
-//                    Toast.makeText(getContext(), "Sværhedsgrad sat til svær", Toast.LENGTH_SHORT).show();
-//                }
-//                SingleTon.getGlInstance().saetsvaerhedsgrad(position + 1);
-//                SingleTon.getGlInstance().nulstil();
-//                getFragmentManager().popBackStack();
-//            }
-//
-//        });
-
         return rod;
     }
     public void onClick(View view) {
@@ -139,6 +114,17 @@ public class Svaerhedsgrad extends Fragment implements View.OnClickListener, Run
             count--;
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        startRunning(500);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        handler.removeCallbacks(this);
+    }
 
 
 

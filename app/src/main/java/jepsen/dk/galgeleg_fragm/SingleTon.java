@@ -65,7 +65,7 @@ public class SingleTon extends Application{
             e.printStackTrace();
         }
         for (String i : placeHolder){
-            System.out.println(i);
+//            System.out.println(i);
             gl.muligeOrd.add(i);
         }
         gl.inddelSvaerhedsgrad();
