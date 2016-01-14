@@ -8,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:name=".SingleTon"
-        android:icon="@mipmap/hangman"
+        android:icon="@mipmap/hangman1"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
