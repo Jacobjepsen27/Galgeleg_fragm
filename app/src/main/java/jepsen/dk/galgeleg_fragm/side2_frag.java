@@ -1,5 +1,12 @@
 package jepsen.dk.galgeleg_fragm;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,7 +27,8 @@ import java.util.ArrayList;
  */
 
 
-public class side2_frag extends Fragment implements View.OnClickListener{
+public class side2_frag extends Fragment implements View.OnClickListener, SensorEventListener {
+
 
     private ImageView img;
     private TextView txt;
@@ -29,11 +37,15 @@ public class side2_frag extends Fragment implements View.OnClickListener{
     private int[] knap = {R.id.A, R.id.B, R.id.C, R.id.D, R.id.E, R.id.F, R.id.G, R.id.H, R.id.I, R.id.J, R.id.K, R.id.L,
             R.id.M, R.id.N, R.id.O, R.id.P, R.id.Q, R.id.R, R.id.S, R.id.T, R.id.U, R.id.V, R.id.W, R.id.X, R.id.Y, R.id.Z, R.id.Æ, R.id.Ø, R.id.Å};
     Button btn;
+    private long lastShaken = System.currentTimeMillis();
+    private long cTime;
 
 
     public View onCreateView(LayoutInflater i, ViewGroup container, Bundle savedInstanceState) {
 
         rod = (ViewGroup) i.inflate(R.layout.side2_frag, container, false);
+
+
 
         if (savedInstanceState == null) {
             img = (ImageView) rod.findViewById(R.id.mainImgImageView);
@@ -43,6 +55,14 @@ public class side2_frag extends Fragment implements View.OnClickListener{
                 btn = (Button) rod.findViewById(knap[j]);
                 btn.setOnClickListener(this);
             }
+
+            SingleTon.sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+            SingleTon.accelerometer = SingleTon.sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            SingleTon.sensorManager.registerListener(this, SingleTon.accelerometer, SensorManager.SENSOR_DELAY_UI);
+            lastShaken = System.currentTimeMillis();
+            Log.d("TID1", Long.toString(lastShaken));
+            Log.d("Sensormanager", "sensor aktiveret");
+
         }
         return rod;
     }
@@ -59,6 +79,7 @@ public class side2_frag extends Fragment implements View.OnClickListener{
               // Gæt på et bogstav og håndter fejlsituationer (ugyldige gæt)
                 try {
                     SingleTon.getGlInstance().gætBogstav(bogstav);
+
                 } catch (Exception e){
                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show(); // Viser en lille popup med fejltekst fra Galgelogik
                     return;
@@ -114,5 +135,36 @@ public class side2_frag extends Fragment implements View.OnClickListener{
                 img.setImageResource(R.drawable.forkert6);
                 break;
         }
+    }
+
+
+    @Override
+    public void onSensorChanged(SensorEvent e) {
+        double g=9.80665; // normal tyngdeaccelerationen
+        double sum=Math.abs(e.values[0])+Math.abs(e.values[1])+Math.abs(e.values[2]);
+        cTime = System.currentTimeMillis();
+        Log.d("TID2", Long.toString(cTime));
+        if(sum>3*g && cTime-lastShaken> 2000){
+            lastShaken = cTime;
+            getFragmentManager().popBackStack();
+            SingleTon.getGlInstance().nulstil();
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentindhold, new side2_frag())
+                    .addToBackStack(null)
+                    .commit();
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        System.out.println("OnDestroy() i side2 frag");
+        SingleTon.sensorManager.unregisterListener(this, SingleTon.accelerometer);
+        super.onDestroy();
+
     }
 }

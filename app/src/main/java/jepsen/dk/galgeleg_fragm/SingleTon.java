@@ -2,6 +2,8 @@ package jepsen.dk.galgeleg_fragm;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -39,7 +41,10 @@ public class SingleTon extends Application{
     public static String [] tempScoreShow = new String[8];
     private ArrayList<String> placeHolder;
     private boolean firstStartUp;
+    public static Sensor accelerometer;
+    public static SensorManager sensorManager;
     SharedPreferences sp;
+    public static boolean åbnNy = false;
 
     public void onCreate(){
         super.onCreate();

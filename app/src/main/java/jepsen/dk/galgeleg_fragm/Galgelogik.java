@@ -65,6 +65,8 @@ public class Galgelogik implements Serializable{
 
   public long getScore() { return highscore; };
 
+  public long getStart() {return start;}
+
   public long getDelta() {return delta;}
 
   public void setStatus(boolean status){ spilletErVundet = status;  }
