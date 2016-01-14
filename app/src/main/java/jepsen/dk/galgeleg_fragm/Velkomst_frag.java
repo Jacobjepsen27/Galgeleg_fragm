@@ -58,6 +58,7 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
     @Override
     public void onClick(View v) {
         if (v==start){
+            SingleTon.gl.nulstil();
             count = -1;
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragmentindhold, new side2_frag())

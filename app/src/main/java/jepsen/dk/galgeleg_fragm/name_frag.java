@@ -92,6 +92,7 @@ public class name_frag extends Fragment implements View.OnClickListener {
 
                 SingleTon.tempHighscore(navn);
 
+                getParentFragment().getFragmentManager().popBackStack();
                 getParentFragment().getFragmentManager().beginTransaction()
                         .replace(R.id.fragmentindhold, new highscore_viewTemp())
                         .addToBackStack(null)

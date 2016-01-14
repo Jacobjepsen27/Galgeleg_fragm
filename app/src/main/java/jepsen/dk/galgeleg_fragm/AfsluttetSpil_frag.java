@@ -61,16 +61,18 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v==again){
-            SingleTon.getGlInstance().nulstil();
+//            SingleTon.gl.nulstil();
             getFragmentManager().popBackStack();
 
     } else if (v==highscore){
             if(SingleTon.getGlInstance().erSpilletVundet() && Galgelogik.inHighscore()) {
+                    getFragmentManager().popBackStack();
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragmentindhold, new highscore_cont())
                             .addToBackStack(null)
                             .commit();
             } else {
+                getFragmentManager().popBackStack();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.fragmentindhold, new highscore_view())
                         .addToBackStack(null)
