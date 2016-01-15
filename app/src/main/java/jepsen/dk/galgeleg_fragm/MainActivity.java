@@ -1,11 +1,13 @@
 package jepsen.dk.galgeleg_fragm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_ordliste) {
-
+            Toast.makeText(getBaseContext(), "Ordliste valgt", Toast.LENGTH_SHORT).show();
+            Intent ordliste = new Intent(this,ordListe_activity.class);
+            startActivity(ordliste);
             return true;
         }
 
