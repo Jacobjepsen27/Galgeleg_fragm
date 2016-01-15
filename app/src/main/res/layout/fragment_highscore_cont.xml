@@ -21,10 +21,10 @@
             android:layout_width="match_parent"
             android:layout_height="0px"
             android:layout_weight="8"
-            android:name="jepsen.dk.galgeleg_fragm.highscore_frag"
+            android:name="jepsen.dk.galgeleg_fragm.highscore_temp"
             android:id="@+id/fragment"
             android:layout_gravity="center_horizontal"
-            tools:layout="@layout/fragment_highscore_frag" />
+            tools:layout="@layout/fragment_highscore_temp" />
 
         <fragment
             android:layout_width="match_parent"

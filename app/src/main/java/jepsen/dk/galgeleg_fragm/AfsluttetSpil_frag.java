@@ -78,7 +78,8 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
 
     } else if (v==highscore){
             if(SingleTon.getGlInstance().erSpilletVundet() && Galgelogik.inHighscore()) {
-                    getFragmentManager().popBackStack();
+                SingleTon.tempHighscore("");
+                getFragmentManager().popBackStack();
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragmentindhold, new highscore_cont())
                             .addToBackStack(null)
