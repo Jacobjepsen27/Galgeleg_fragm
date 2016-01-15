@@ -8,6 +8,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -59,6 +60,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
             SingleTon.sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
             SingleTon.accelerometer = SingleTon.sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             SingleTon.sensorManager.registerListener(this, SingleTon.accelerometer, SensorManager.SENSOR_DELAY_UI);
+            SingleTon.vibe = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
             lastShaken = System.currentTimeMillis();
             Log.d("TID1", Long.toString(lastShaken));
             Log.d("Sensormanager", "sensor aktiveret");
@@ -72,6 +74,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
 
         if(v instanceof Button){
            bogstav = ((Button) v).getText().toString().toLowerCase();
+            SingleTon.vibe.vibrate(50);
             v.setSelected(true);
             v.setEnabled(false);
     }
@@ -146,6 +149,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
         Log.d("TID2", Long.toString(cTime));
         if(sum>3*g && cTime-lastShaken> 2000){
             lastShaken = cTime;
+            SingleTon.vibe.vibrate(300);
             getFragmentManager().popBackStack();
             SingleTon.getGlInstance().nulstil();
             getFragmentManager().beginTransaction()
