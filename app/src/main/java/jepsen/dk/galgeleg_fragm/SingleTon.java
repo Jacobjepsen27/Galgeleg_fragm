@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
@@ -45,8 +46,8 @@ public class SingleTon extends Application{
     public static Sensor accelerometer;
     public static SensorManager sensorManager;
     SharedPreferences sp;
-    public static boolean åbnNy = false;
     public static Vibrator vibe;
+    public static MediaPlayer lyd;
 
 
 

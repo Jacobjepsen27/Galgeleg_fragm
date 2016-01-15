@@ -1,5 +1,6 @@
 package jepsen.dk.galgeleg_fragm;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -34,20 +35,30 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
             highscore = (Button) rod.findViewById(R.id.highscoreButton);
             highscore.setOnClickListener(this);
 
+
+
         Log.d("HIGHSCORE", Long.toString(SingleTon.getGlInstance().getScore()));
             if (SingleTon.getGlInstance().erSpilletTabt()) {
+                SingleTon.lyd = MediaPlayer.create(this.getContext(), R.raw.sur);
+                SingleTon.lyd.start();
+
                 tabt.setText("Ordet var: " + SingleTon.getGlInstance().getOrdet() );
                 status.setText("Du har tabt!");
                 hs.setText("Score: " + Long.toString(SingleTon.getGlInstance().getScore()));
                 highscore.setText("Se highscore");
             } else if (SingleTon.getGlInstance().erSpilletVundet()) {
                 if(Galgelogik.inHighscore()==true) {
+                    SingleTon.lyd = MediaPlayer.create(this.getContext(), R.raw.glad);
+                    SingleTon.lyd.start();
                     tabt.setText("Du gættede: " +SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
                     hs.setText("Score: " + Long.toString(SingleTon.getGlInstance().getScore()));
                     highscore.setText("Gem highscore");
                 }
-                else{ tabt.setText("Du gættede: " + SingleTon.getGlInstance().getOrdet() );
+                else{
+                    SingleTon.lyd = MediaPlayer.create(this.getContext(), R.raw.glad);
+                    SingleTon.lyd.start();
+                    tabt.setText("Du gættede: " + SingleTon.getGlInstance().getOrdet() );
                     status.setText("Du har vundet!");
                     hs.setText("Score: " + Long.toString(SingleTon.getGlInstance().getScore()));
                     highscore.setText("Se highscore");
