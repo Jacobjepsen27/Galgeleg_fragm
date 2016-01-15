@@ -3,6 +3,7 @@ package jepsen.dk.galgeleg_fragm;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
 
         rod = (ViewGroup) i.inflate(R.layout.afsluttetspil_frag, container, false);
 
-
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
             again = (Button) rod.findViewById(R.id.againButton);
             again.setOnClickListener(this);

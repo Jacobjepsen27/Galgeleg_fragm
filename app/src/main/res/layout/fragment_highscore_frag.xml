@@ -10,8 +10,8 @@
         android:layout_height="350dp"
         android:background="#81D4FA"
         android:layout_marginBottom="16dp"
-        android:layout_centerHorizontal="true">
-
+        android:layout_centerHorizontal="true"
+        >
 
     <TextView
         android:layout_width="match_parent"

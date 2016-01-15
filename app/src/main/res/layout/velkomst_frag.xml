@@ -25,13 +25,12 @@
             android:layout_height="0px"
             android:layout_weight="1"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Galgeleg"
             android:id="@+id/galgeTextView"
             android:textSize="45dp"
             android:fontFamily="sans-serif-medium"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
-
+        <!--android:text="Galgeleg"-->
 
         <ImageView
             android:layout_width="wrap_content"

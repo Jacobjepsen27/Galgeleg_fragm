@@ -10,6 +10,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -46,7 +47,7 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
 
         rod = (ViewGroup) i.inflate(R.layout.side2_frag, container, false);
 
-
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         if (savedInstanceState == null) {
             img = (ImageView) rod.findViewById(R.id.mainImgImageView);

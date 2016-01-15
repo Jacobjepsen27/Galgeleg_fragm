@@ -3,6 +3,7 @@ package jepsen.dk.galgeleg_fragm;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class Svaerhedsgrad extends Fragment implements View.OnClickListener, Run
         // Inflate the layout for this fragment
         rod = (ViewGroup) i.inflate(R.layout.fragment_svaerhedsgrad, container, false);
 
-
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
         button1 = (Button) rod.findViewById(R.id.knapLet);
         button1.setOnClickListener(this);
         button2 = (Button) rod.findViewById(R.id.knapMedium);

@@ -3,6 +3,7 @@ package jepsen.dk.galgeleg_fragm;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,11 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
     public View onCreateView(LayoutInflater i, ViewGroup container,Bundle savedInstanceState) {
 
         rod = (ViewGroup) i.inflate(R.layout.velkomst_frag, container, false);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Galgeleg");
+        ((AppCompatActivity) getActivity()).getSupportActionBar();
+
 
         if(savedInstanceState == null) {
             difficult = (Button) rod.findViewById(R.id.difButton);
