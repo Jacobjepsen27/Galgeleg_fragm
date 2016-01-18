@@ -13,12 +13,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class ordListe_activity extends AppCompatActivity{
 
     private ListView listView;
     private ArrayAdapter<String> adapter;
     public static int pos;
     public String rettetOrd;
+    public boolean rettelser = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,16 @@ public class ordListe_activity extends AppCompatActivity{
             }
         });
         registerForContextMenu(listView);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ordListe_activity.this);
+        builder.setTitle("Ordliste");
+        builder.setMessage("Tryk og hold for at redigere");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                adapter.notifyDataSetChanged();
+            }
+        });
+        builder.show();
     }
 
     @Override
@@ -80,6 +93,7 @@ public class ordListe_activity extends AppCompatActivity{
                 public void onClick(DialogInterface dialog, int which) {
                     rettetOrd = input.getText().toString();
                     SingleTon.getGlInstance().muligeOrd.set(pos,rettetOrd);
+                    rettelser = true;
                     adapter.notifyDataSetChanged();
                 }
             });
@@ -98,11 +112,26 @@ public class ordListe_activity extends AppCompatActivity{
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     SingleTon.getGlInstance().muligeOrd.remove(pos);
+                    rettelser = true;
                     adapter.notifyDataSetChanged();
                 }
             });
             builder.show();
         }
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        //Hvis der er ændret i ordlisten gemmes dette på telefonens hukommelse
+        if(rettelser){
+            try {
+                Serialisering.gem(Galgelogik.muligeOrd, this.getFilesDir() + "/ord.ser");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            rettelser = false;
+        }
     }
 }
