@@ -25,6 +25,7 @@
         </activity>
 
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
             android:name=".ordListe_activity"
             android:label="Ordlisten"

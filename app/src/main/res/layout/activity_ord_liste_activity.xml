@@ -8,9 +8,9 @@
     <LinearLayout>
 
         <ListView
+            android:background="#B3E5FC"
             android:layout_width="0px"
             android:layout_weight="1"
-            android:layout_marginLeft="16dp"
             android:layout_height="match_parent"
             android:id="@+id/ordListe"
             android:layout_alignParentTop="true"
