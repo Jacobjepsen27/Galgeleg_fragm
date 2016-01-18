@@ -2,10 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/test_context"
-        android:orderInCategory="300"
-        android:title="Ordliste"
+        android:id="@+id/ord_ret"
+        android:title="Ret"
         >
     </item>
+
+    <item
+        android:id="@+id/ord_slet"
+        android:title="Slet"
+        >
+    </item>
+
 
 </menu>

@@ -224,9 +224,9 @@ public class Galgelogik implements Serializable{
         svaereOrd.add(ord);
       }
     }
-    Log.i("Log", "Antal nemme ord: " + nemmeOrd.size());
-    Log.i("Log", "Antal middel ord: " + middelOrd.size());
-    Log.i("Log", "Antal svære ord: " + svaereOrd.size());
+//    Log.i("Log", "Antal nemme ord: " + nemmeOrd.size());
+//    Log.i("Log", "Antal middel ord: " + middelOrd.size());
+//    Log.i("Log", "Antal svære ord: " + svaereOrd.size());
     nulstil();
   }
 
@@ -249,7 +249,7 @@ public class Galgelogik implements Serializable{
       }
     }
     int retur = ord.length()*unikke.length()*(7-unikke.length()*vokaler);
-    Log.i("Log", "Værdi: " + retur + " : Ord: " +ord );
+//    Log.i("Log", "Værdi: " + retur + " : Ord: " +ord );
     return retur;
   }
 
