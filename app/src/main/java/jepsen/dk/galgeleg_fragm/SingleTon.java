@@ -84,7 +84,7 @@ public class SingleTon extends Application{
 
     public void startUpFirstTime(){
         try {
-            Serialisering.gem(Galgelogik.muligeOrd, this.getFilesDir() + "/ord.ser");
+            Serialisering.gem(Galgelogik.trimmedeOrd, this.getFilesDir() + "/ord.ser");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -30,7 +30,7 @@ public class ordListe_activity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ord_liste_activity);
 
-        adapter = new ArrayAdapter<String>(this.getBaseContext(), android.R.layout.simple_list_item_1, SingleTon.getGlInstance().muligeOrd);
+        adapter = new ArrayAdapter<String>(this.getBaseContext(), android.R.layout.simple_list_item_1, Galgelogik.trimmedeOrd);
 
         listView = (ListView) findViewById(R.id.ordListe);
         listView.setAdapter(adapter);
@@ -57,7 +57,7 @@ public class ordListe_activity extends AppCompatActivity{
             }
         });
         builder.show();
-        System.out.println(Galgelogik.muligeOrd.size());
+        System.out.println(Galgelogik.trimmedeOrd.size());
     }
 
     @Override
@@ -84,7 +84,7 @@ public class ordListe_activity extends AppCompatActivity{
             Toast.makeText(getBaseContext(), "Ret "+pos, Toast.LENGTH_SHORT).show();
             builder.setTitle("Ret ord");
             final EditText input = new EditText(ordListe_activity.this);
-            input.setText(SingleTon.getGlInstance().muligeOrd.get(pos).toString());
+            input.setText(Galgelogik.trimmedeOrd.get(pos).toString());
             builder.setView(input);
             builder.setNegativeButton("Fortryd", new DialogInterface.OnClickListener() {
                 @Override
@@ -96,7 +96,7 @@ public class ordListe_activity extends AppCompatActivity{
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     rettetOrd = input.getText().toString();
-                    SingleTon.getGlInstance().muligeOrd.set(pos,rettetOrd);
+                    Galgelogik.trimmedeOrd.set(pos, rettetOrd);
                     rettelser = true;
                     adapter.notifyDataSetChanged();
                 }
@@ -105,7 +105,7 @@ public class ordListe_activity extends AppCompatActivity{
         } else if(item.getItemId()==R.id.ord_slet){
             Toast.makeText(getBaseContext(), "Slet "+pos, Toast.LENGTH_SHORT).show();
             builder.setTitle("Slet ord");
-            builder.setMessage("Ordet: " + "'" + SingleTon.getGlInstance().muligeOrd.get(pos).toString() + "'" + " slettes permanent");
+            builder.setMessage("Ordet: " + "'" + Galgelogik.trimmedeOrd.get(pos).toString() + "'" + " slettes permanent");
             builder.setNegativeButton("Fortryd", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -115,7 +115,7 @@ public class ordListe_activity extends AppCompatActivity{
             builder.setPositiveButton("Bekræft", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    SingleTon.getGlInstance().muligeOrd.remove(pos);
+                    Galgelogik.trimmedeOrd.remove(pos);
                     rettelser = true;
                     adapter.notifyDataSetChanged();
                 }
@@ -131,7 +131,7 @@ public class ordListe_activity extends AppCompatActivity{
         //Hvis der er ændret i ordlisten gemmes dette på telefonens hukommelse
         if(rettelser){
             try {
-                Serialisering.gem(Galgelogik.muligeOrd, this.getFilesDir() + "/ord.ser");
+                Serialisering.gem(Galgelogik.trimmedeOrd, this.getFilesDir() + "/ord.ser");
             } catch (IOException e) {
                 e.printStackTrace();
             }

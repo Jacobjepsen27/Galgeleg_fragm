@@ -15,6 +15,7 @@ import java.util.Random;
 public class Galgelogik implements Serializable{
   public ArrayList<String> gemOrd = new ArrayList<>();
   public static ArrayList<String> muligeOrd = new ArrayList<String>();
+  public static ArrayList<String> trimmedeOrd = new ArrayList<String>();
   private ArrayList<String> nemmeOrd = new ArrayList<String>();
   private ArrayList<String> middelOrd = new ArrayList<String>();
   private ArrayList<String> svaereOrd = new ArrayList<String>();
@@ -103,7 +104,7 @@ public class Galgelogik implements Serializable{
       case 1: ordet = nemmeOrd.get(new Random().nextInt(nemmeOrd.size())); break;
       case 2: ordet = middelOrd.get(new Random().nextInt(middelOrd.size())); break;
       case 3: ordet = svaereOrd.get(new Random().nextInt(svaereOrd.size())); break;
-      default: ordet = muligeOrd.get(new Random().nextInt(muligeOrd.size()));
+      default: ordet = trimmedeOrd.get(new Random().nextInt(trimmedeOrd.size()));
     }
     opdaterSynligtOrd();
   }
@@ -195,6 +196,12 @@ public class Galgelogik implements Serializable{
     muligeOrd.clear();
     muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
+    for(String ord : muligeOrd){
+      if(ord.length()>2){
+        trimmedeOrd.add(ord);
+      }
+    }
+
 //    for(String ord : muligeOrd){
 //      int lix = beregnOrd(ord);
 //      if(lix > 0 && lix < 200){
@@ -209,19 +216,21 @@ public class Galgelogik implements Serializable{
 //    Log.i("Log", "Antal middel ord: " + middelOrd.size());
 //    Log.i("Log", "Antal svære ord: " + svaereOrd.size());
 
-    System.out.println("muligeOrd = " + muligeOrd);
-    nulstil(); //ligegyldig
+    System.out.println("muligeOrd = " + trimmedeOrd);
+//    nulstil(); //ligegyldig
   }
 
   public void inddelSvaerhedsgrad(){
-    for(String ord : muligeOrd){
+    for(String ord : trimmedeOrd){
       int lix = beregnOrd(ord);
-      if(lix > 0 && lix < 200){
-        nemmeOrd.add(ord);
-      } else if (lix >= 200 && lix <450){
-        middelOrd.add(ord);
-      } else {
-        svaereOrd.add(ord);
+      if (ord.length()>2){
+        if(lix > 0 && lix < 200){
+          nemmeOrd.add(ord);
+        } else if (lix >= 200 && lix <450){
+          middelOrd.add(ord);
+        } else {
+          svaereOrd.add(ord);
+        }
       }
     }
 //    Log.i("Log", "Antal nemme ord: " + nemmeOrd.size());
