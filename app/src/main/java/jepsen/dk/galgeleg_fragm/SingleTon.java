@@ -76,7 +76,7 @@ public class SingleTon extends Application{
         }
         for (String i : placeHolder){
 //            System.out.println(i);
-            gl.muligeOrd.add(i);
+            gl.trimmedeOrd.add(i);
         }
         gl.inddelSvaerhedsgrad();
         gl.saetsvaerhedsgrad(2);
