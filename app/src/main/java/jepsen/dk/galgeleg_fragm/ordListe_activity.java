@@ -1,7 +1,9 @@
 package jepsen.dk.galgeleg_fragm;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -32,12 +34,13 @@ public class ordListe_activity extends AppCompatActivity{
 
         listView = (ListView) findViewById(R.id.ordListe);
         listView.setAdapter(adapter);
-
+        SingleTon.vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getBaseContext(), "LAAAAANGT KLIK", Toast.LENGTH_SHORT).show();
+                SingleTon.vibe.vibrate(50);
                 pos = position;
                 openContextMenu(listView);
                 return true;
