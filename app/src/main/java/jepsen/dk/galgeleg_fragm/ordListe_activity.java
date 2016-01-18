@@ -54,6 +54,7 @@ public class ordListe_activity extends AppCompatActivity{
             }
         });
         builder.show();
+        System.out.println(Galgelogik.muligeOrd.size());
     }
 
     @Override

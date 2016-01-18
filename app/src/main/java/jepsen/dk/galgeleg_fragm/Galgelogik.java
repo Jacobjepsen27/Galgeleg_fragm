@@ -83,14 +83,14 @@ public class Galgelogik implements Serializable{
 
 
   public Galgelogik() {
-    muligeOrd.add("bil");
-    muligeOrd.add("computer");
-    muligeOrd.add("programmering");
-    muligeOrd.add("motorvej");
-    muligeOrd.add("busrute");
-    muligeOrd.add("gangsti");
-    muligeOrd.add("skovsnegl");
-    muligeOrd.add("solsort");
+//    muligeOrd.add("bil");
+//    muligeOrd.add("computer");
+//    muligeOrd.add("programmering");
+//    muligeOrd.add("motorvej");
+//    muligeOrd.add("busrute");
+//    muligeOrd.add("gangsti");
+//    muligeOrd.add("skovsnegl");
+//    muligeOrd.add("solsort");
     saetsvaerhedsgrad(2);
   }
 
