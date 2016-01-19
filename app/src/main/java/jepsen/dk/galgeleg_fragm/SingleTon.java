@@ -53,6 +53,7 @@ public class SingleTon extends Application{
     SharedPreferences sp;
     public static Vibrator vibe;
     public static MediaPlayer lyd;
+    public static boolean doneLoading=false;
 
 
 
@@ -103,6 +104,7 @@ public class SingleTon extends Application{
         }
         gl.inddelSvaerhedsgrad();
         gl.saetsvaerhedsgrad(2);
+        doneLoading=true;
     }
 
     public static void tempHighscore(String name){

@@ -190,21 +190,18 @@ public class Galgelogik implements Serializable{
 
   public void hentOrdFraDr() throws Exception {
     String data = hentUrl("https://da.wikipedia.org/wiki/Danmark");
-    System.out.println("data = " + data);
+//    System.out.println("data = " + data);
 
     data = data.replaceAll("<.+?>", " ").toLowerCase().replaceAll("[^a-zæøå]", " ");
-    System.out.println("data = " + data);
+//    System.out.println("data = " + data);
     muligeOrd.clear();
     muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
     for(String ord : muligeOrd){
-      if(ord.length()>2){
-        trimmedeOrd.add(ord);
-      }
+        if(ord.length()>2 && ord.length()<20){
+          trimmedeOrd.add(ord);
+        }
     }
-
-    System.out.println("muligeOrd = " + trimmedeOrd);
-//    nulstil(); //ligegyldig
   }
 
   public void inddelSvaerhedsgrad(){
