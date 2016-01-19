@@ -28,6 +28,7 @@ public class Galgelogik implements Serializable{
   private boolean spilletErTabt;
   static long highscore;
   private long start, slut, delta;
+  public static boolean network;
 
 
   public static int svaerhedsgrad = 0;
@@ -202,20 +203,6 @@ public class Galgelogik implements Serializable{
       }
     }
 
-//    for(String ord : muligeOrd){
-//      int lix = beregnOrd(ord);
-//      if(lix > 0 && lix < 200){
-//        nemmeOrd.add(ord);
-//      } else if (lix >= 200 && lix <450){
-//        middelOrd.add(ord);
-//      } else {
-//        svaereOrd.add(ord);
-//      }
-//    }
-//    Log.i("Log", "Antal nemme ord: " + nemmeOrd.size());
-//    Log.i("Log", "Antal middel ord: " + middelOrd.size());
-//    Log.i("Log", "Antal svære ord: " + svaereOrd.size());
-
     System.out.println("muligeOrd = " + trimmedeOrd);
 //    nulstil(); //ligegyldig
   }
@@ -286,6 +273,20 @@ public class Galgelogik implements Serializable{
         throw new Exception("Indsæt kun bogstaver");
       }
     }
+  }
+
+  public void standardWords(){
+    trimmedeOrd.add("biler");
+    trimmedeOrd.add("computer");
+    trimmedeOrd.add("programmering");
+    trimmedeOrd.add("motorvej");
+    trimmedeOrd.add("busrute");
+    trimmedeOrd.add("gangsti");
+    trimmedeOrd.add("skovsnegl");
+    trimmedeOrd.add("solsort");
+    trimmedeOrd.add("Folketinget");
+    trimmedeOrd.add("Statsminister");
+    trimmedeOrd.add("Kjole");
   }
 
 

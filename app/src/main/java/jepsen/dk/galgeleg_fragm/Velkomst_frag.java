@@ -46,16 +46,18 @@ public class Velkomst_frag extends Fragment implements View.OnClickListener, Run
             difficult.setOnClickListener(this);
 
             seHS = (Button) rod.findViewById(R.id.HSbutton);
-            seHS.setOnClickListener(this);
+            if(Galgelogik.network){
+                seHS.setOnClickListener(this);
+            } else {
+                seHS.setVisibility(View.INVISIBLE);
+            }
+
 
             start = (Button) rod.findViewById(R.id.startButton);
             galgeImg = (ImageView) rod.findViewById(R.id.galgeImageView);
             galgeImg.setImageResource(R.drawable.forkert4);
             count = -1;
             countMode = true;
-
-
-
             start.setOnClickListener(this);
         }
         return rod;

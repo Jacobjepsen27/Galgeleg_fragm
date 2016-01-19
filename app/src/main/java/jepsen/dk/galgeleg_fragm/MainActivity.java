@@ -1,6 +1,11 @@
 package jepsen.dk.galgeleg_fragm;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +27,19 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
+        if(!Galgelogik.network){
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("Netværksforbindelse");
+            builder.setMessage("Der er ingen netværksforbindelse til rådighed. Diverse funktioner vil ikke være til rådighed.");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //Programmet fortsættes
+                }
+            });
+            builder.show();
+        }
 
         if(savedInstanceState == null){
             Fragment fragment = new Velkomst_frag();
@@ -55,4 +73,15 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+//    private void checkNetworkConnectionAvailable() {
+//        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo info = cm.getActiveNetworkInfo();
+//        if (info == null){
+//            Galgelogik.network=false;
+//        } else {
+//            Galgelogik.network=true;
+//        }
+//        NetworkInfo.State network = info.getState();
+//        return (network == NetworkInfo.State.CONNECTED || network == NetworkInfo.State.CONNECTING);
 }

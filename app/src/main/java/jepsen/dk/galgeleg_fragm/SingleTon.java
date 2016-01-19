@@ -1,10 +1,15 @@
 package jepsen.dk.galgeleg_fragm;
 
+import android.app.AlertDialog;
 import android.app.Application;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
@@ -54,14 +59,23 @@ public class SingleTon extends Application{
     public void onCreate(){
         super.onCreate();
         gl = new Galgelogik();
-        Parse.initialize(this);
-        hentScore();
-        //hentOrd();
+        checkNetworkConnectionAvailable();
+        if(Galgelogik.network){
+            Parse.initialize(this);
+            hentScore();
+            System.out.println("Der er INTERNET");
+        }
         sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
         firstStartUp = sp.getBoolean("startUp",true);
         if(firstStartUp){
             System.out.println("DEN STARTEDE FOR FØRSTE GANGE");
-            hentOrd(sp);
+            if(Galgelogik.network){
+                hentOrd(sp);
+            } else {
+                gl.standardWords();
+                gl.inddelSvaerhedsgrad();
+            }
+
         } else{
             System.out.println("DEN STARTEDE IKKE FOR FØRSTE GANGE");
             notFirstStartUp();
@@ -75,7 +89,6 @@ public class SingleTon extends Application{
             e.printStackTrace();
         }
         for (String i : placeHolder){
-//            System.out.println(i);
             gl.trimmedeOrd.add(i);
         }
         gl.inddelSvaerhedsgrad();
@@ -213,5 +226,15 @@ public class SingleTon extends Application{
                 }
             }
         });
+    }
+
+    private void checkNetworkConnectionAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = cm.getActiveNetworkInfo();
+        if (info == null) {
+            Galgelogik.network = false;
+        } else {
+            Galgelogik.network = true;
+        }
     }
 }
