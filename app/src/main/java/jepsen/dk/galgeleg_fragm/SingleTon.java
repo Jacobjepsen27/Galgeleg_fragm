@@ -64,12 +64,10 @@ public class SingleTon extends Application{
         if(Galgelogik.network){
             Parse.initialize(this);
             hentScore();
-            System.out.println("Der er INTERNET");
         }
         sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
         firstStartUp = sp.getBoolean("startUp",true);
         if(firstStartUp){
-            System.out.println("DEN STARTEDE FOR FØRSTE GANGE");
             if(Galgelogik.network){
                 hentOrd(sp);
             } else {
@@ -78,7 +76,6 @@ public class SingleTon extends Application{
             }
 
         } else{
-            System.out.println("DEN STARTEDE IKKE FOR FØRSTE GANGE");
             notFirstStartUp();
         }
     }
@@ -176,13 +173,10 @@ public class SingleTon extends Application{
     }
 
     public static void hentScore(){
-        Log.d("PARSE_START", "STARTER");
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("HiScore");
-        Log.d("PARSE_STARTET", "STARTET");
         query2.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> scoreList, ParseException e) {
                 if (e == null) {
-                    Log.d("INGEN_EXCEPTION", "INGEN EXCEPTION");
                     scoreInt = new Integer[scoreList.size()];
                     score = new String[scoreList.size()];
                     navn = new String[scoreList.size()];
@@ -223,7 +217,6 @@ public class SingleTon extends Application{
                     }
 
                 } else {
-                    Log.d("PARSE_EXCEPTION", "DER ER SKET EN FEJL");
                     Log.d("score", "Error: " + e.getMessage());
                 }
             }

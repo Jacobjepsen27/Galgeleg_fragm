@@ -63,9 +63,6 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
             SingleTon.sensorManager.registerListener(this, SingleTon.accelerometer, SensorManager.SENSOR_DELAY_UI);
             SingleTon.vibe = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
             lastShaken = System.currentTimeMillis();
-            Log.d("TID1", Long.toString(lastShaken));
-            Log.d("Sensormanager", "sensor aktiveret");
-
         }
         return rod;
     }
@@ -147,7 +144,6 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
         double g=9.80665; // normal tyngdeaccelerationen
         double sum=Math.abs(e.values[0])+Math.abs(e.values[1])+Math.abs(e.values[2]);
         cTime = System.currentTimeMillis();
-        Log.d("TID2", Long.toString(cTime));
         if(sum>3*g && cTime-lastShaken> 2000){
             lastShaken = cTime;
             SingleTon.vibe.vibrate(300);
@@ -167,7 +163,6 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
 
     @Override
     public void onDestroy() {
-        System.out.println("OnDestroy() i side2 frag");
         SingleTon.sensorManager.unregisterListener(this, SingleTon.accelerometer);
         super.onDestroy();
 

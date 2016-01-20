@@ -198,7 +198,7 @@ public class Galgelogik implements Serializable{
     muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
     for(String ord : muligeOrd){
-        if(ord.length()>2 && ord.length()<20){
+        if(ord.length()>2 && ord.length()<16){
           trimmedeOrd.add(ord);
         }
     }

@@ -36,17 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
         firstStartUp = sp.getBoolean("startUp", true);
-        System.out.println(firstStartUp);
         if(firstStartUp && Galgelogik.network){
             Intent loading = new Intent(this, Loading_activity.class);
             startActivity(loading);
         }
-        System.out.println("BLABLAKBKABAA");
         //Hvis der ikke er netværk skal bruger promptes
         if(!Galgelogik.network){
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Netværksforbindelse");
-            builder.setMessage("Der er ingen netværksforbindelse til rådighed. Diverse funktioner vil ikke være til rådighed.");
+            builder.setMessage("Der er ingen netværksforbindelse til rådighed. Alle funktioner vil ikke være tilgængelige.");
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
                 @Override
@@ -81,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_ordliste) {
-            Toast.makeText(getBaseContext(), "Ordliste valgt", Toast.LENGTH_SHORT).show();
             Intent ordliste = new Intent(this,ordListe_activity.class);
             startActivity(ordliste);
             return true;

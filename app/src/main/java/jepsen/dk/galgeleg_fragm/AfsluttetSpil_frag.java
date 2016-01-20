@@ -37,8 +37,6 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
             highscore.setOnClickListener(this);
 
 
-
-        Log.d("HIGHSCORE", Long.toString(SingleTon.getGlInstance().getScore()));
             if (SingleTon.getGlInstance().erSpilletTabt()) {
                 if(Galgelogik.network){
                     SingleTon.lyd = MediaPlayer.create(this.getContext(), R.raw.sur);
