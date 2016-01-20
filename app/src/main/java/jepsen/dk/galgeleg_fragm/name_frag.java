@@ -85,9 +85,9 @@ public class name_frag extends Fragment implements View.OnClickListener {
 
                 ParseObject gameScore = new ParseObject("HiScore");
                 gameScore.put("navn", navn);
-                gameScore.saveInBackground();
+                gameScore.saveEventually();
                 gameScore.put("score", score);
-                gameScore.saveInBackground();
+                gameScore.saveEventually();
                 Log.d("Data", "DATA BURDE VÆRE GEMT");
 
                 SingleTon.tempHighscore(navn);
