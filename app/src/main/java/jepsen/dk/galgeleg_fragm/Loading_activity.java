@@ -10,14 +10,13 @@ import android.widget.ProgressBar;
 public class Loading_activity extends AppCompatActivity {
 
     private ProgressBar spinner;
-    private ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading_activity);
 
-        //img = (ImageView) findViewById(R.id.loadingImageView);
+
         spinner = (ProgressBar) findViewById(R.id.progressBar);
         spinner.setVisibility(View.VISIBLE);
 

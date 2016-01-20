@@ -87,7 +87,6 @@ public class AfsluttetSpil_frag extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v==again){
-//            SingleTon.gl.nulstil();
             getFragmentManager().popBackStack();
 
     } else if (v==highscore){

@@ -19,9 +19,7 @@ import android.widget.TextView;
 public class highscore_frag extends Fragment {
 
     private ViewGroup rod;
-    private ListView left, right;
 
-    ArrayAdapter<String> adapter1, adapter2;
 
 
 
