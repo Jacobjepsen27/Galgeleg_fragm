@@ -5,25 +5,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
-import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     public Toolbar toolbar;
-    private ProgressBar spinner;
-    private SharedPreferences sp;
-    private boolean firstStartUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +26,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        sp = PreferenceManager.getDefaultSharedPreferences(this.getBaseContext());
-        firstStartUp = sp.getBoolean("startUp", true);
-        if(firstStartUp && Galgelogik.network){
-            Intent loading = new Intent(this, Loading_activity.class);
-            startActivity(loading);
-        }
+        System.out.println("MAIN");
+
         //Hvis der ikke er netværk skal bruger promptes
         if(!Galgelogik.network){
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -54,13 +42,16 @@ public class MainActivity extends AppCompatActivity {
             });
             builder.show();
         }
-
-        if(savedInstanceState == null){
-            Fragment fragment = new Velkomst_frag();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.fragmentindhold, fragment)
-                    .commit();
-        }
+//        if(firstStartUp && Galgelogik.network){
+//            Intent loading = new Intent(this, Loading_activity.class);
+//            startActivity(loading);
+//        }
+            if(savedInstanceState == null){
+                Fragment fragment = new Velkomst_frag();
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragmentindhold, fragment)
+                        .commit();
+            }
     }
 
     @Override
