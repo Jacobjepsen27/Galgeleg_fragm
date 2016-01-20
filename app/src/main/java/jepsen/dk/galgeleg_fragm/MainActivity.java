@@ -86,15 +86,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-//    private void checkNetworkConnectionAvailable() {
-//        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo info = cm.getActiveNetworkInfo();
-//        if (info == null){
-//            Galgelogik.network=false;
-//        } else {
-//            Galgelogik.network=true;
-//        }
-//        NetworkInfo.State network = info.getState();
-//        return (network == NetworkInfo.State.CONNECTED || network == NetworkInfo.State.CONNECTING);
 }

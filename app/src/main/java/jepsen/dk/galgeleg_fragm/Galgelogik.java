@@ -85,14 +85,6 @@ public class Galgelogik implements Serializable{
 
 
   public Galgelogik() {
-//    muligeOrd.add("bil");
-//    muligeOrd.add("computer");
-//    muligeOrd.add("programmering");
-//    muligeOrd.add("motorvej");
-//    muligeOrd.add("busrute");
-//    muligeOrd.add("gangsti");
-//    muligeOrd.add("skovsnegl");
-//    muligeOrd.add("solsort");
     saetsvaerhedsgrad(2);
   }
 
@@ -190,10 +182,8 @@ public class Galgelogik implements Serializable{
 
   public void hentOrdFraDr() throws Exception {
     String data = hentUrl("https://da.wikipedia.org/wiki/Danmark");
-//    System.out.println("data = " + data);
 
     data = data.replaceAll("<.+?>", " ").toLowerCase().replaceAll("[^a-zæøå]", " ");
-//    System.out.println("data = " + data);
     muligeOrd.clear();
     muligeOrd.addAll(new HashSet<String>(Arrays.asList(data.split(" "))));
 
@@ -217,9 +207,6 @@ public class Galgelogik implements Serializable{
         }
       }
     }
-//    Log.i("Log", "Antal nemme ord: " + nemmeOrd.size());
-//    Log.i("Log", "Antal middel ord: " + middelOrd.size());
-//    Log.i("Log", "Antal svære ord: " + svaereOrd.size());
     nulstil();
   }
 

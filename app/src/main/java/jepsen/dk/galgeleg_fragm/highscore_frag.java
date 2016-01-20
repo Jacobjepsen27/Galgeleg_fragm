@@ -45,18 +45,6 @@ public class highscore_frag extends Fragment {
         ListView listView = (ListView) rod.findViewById(R.id.highViewLeft);
         listView.setAdapter(adapter);
 
-//        left = (ListView) rod.findViewById(R.id.highViewLeft);
-//        right = (ListView) rod.findViewById(R.id.highViewRight);
-//
-//
-//
-//
-//        adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, SingleTon.navnShow);
-//        left.setAdapter(adapter1);
-//
-//        adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, SingleTon.scoreShow);
-//        right.setAdapter(adapter2);
-
         return rod;
     }
 

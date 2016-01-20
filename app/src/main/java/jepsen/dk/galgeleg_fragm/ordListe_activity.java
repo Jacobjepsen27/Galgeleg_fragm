@@ -39,7 +39,6 @@ public class ordListe_activity extends AppCompatActivity{
 
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getBaseContext(), "LAAAAANGT KLIK", Toast.LENGTH_SHORT).show();
                 SingleTon.vibe.vibrate(50);
                 pos = position;
                 openContextMenu(listView);
@@ -65,15 +64,6 @@ public class ordListe_activity extends AppCompatActivity{
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.context_menu,menu);
-
-//        if (v.getId()==R.id.ordListe){
-//            AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
-//            menu.setHeaderTitle("Redigering");
-//            menu.add(1, 1, 1, "Ret");
-//            menu.add(1,2,1,"Slet");
-//            menu.add("Ret");
-//            menu.add("Slet");
-//        }
     }
 
     @Override

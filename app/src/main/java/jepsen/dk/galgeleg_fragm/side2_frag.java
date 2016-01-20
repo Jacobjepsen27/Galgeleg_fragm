@@ -86,11 +86,6 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
                     return;
                 }
 
-                //test funktioner
-                //SingleTon.getGlInstance().setStatus(true);
-                //SingleTon.getGlInstance().setHighscore(100);
-
-
                 // Opdater det synlige ord
                 txt.setText(SingleTon.getGlInstance().getSynligtOrd());
 
@@ -101,7 +96,6 @@ public class side2_frag extends Fragment implements View.OnClickListener, Sensor
 
                 // Tjek om spillet er slut
                 if (SingleTon.getGlInstance().erSpilletSlut()){
-                    //Log.d("SCOREN i int", Integer.toString((int) Math.round(SingleTon.getGlInstance().getScore())));
                     getFragmentManager().popBackStack();
                     getFragmentManager().beginTransaction()
                             .replace(R.id.fragmentindhold, new AfsluttetSpil_frag())
